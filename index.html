@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Bike Tracker - LiFePO4</title>
+    <title>E-Bike GPS & Battery Tracker</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    <!-- MONITOR utama 1 LAYAR -->
+    <!-- MONITOR UTAMA 1 LAYAR -->
     <div class="card">
         <div class="grid-2" style="margin-bottom: 10px;">
             <div class="stat-box">
@@ -230,7 +230,7 @@
         </div>
 
         <button id="btnGPS" class="btn-primary" onclick="toggleGPS()">📡 Aktifkan GPS</button>
-        <button id="btnTrip" class="btn-success" onclick="toggleTrip()" disabled>▶️️ Mulai Trip</button>
+        <button id="btnTrip" class="btn-success" onclick="toggleTrip()" disabled>▶ Mulai Trip</button>
     </div>
 
     <!-- RIWAYAT PERJALANAN -->
@@ -263,11 +263,12 @@
     let lastLon = null;
     let tripDistance = 0; 
     let tripStartTime = null;
+    let wakeLock = null;
 
     let historyData = JSON.parse(localStorage.getItem('ebike_history_ah')) || [];
 
     window.onload = function() {
-        // Restore pengaturan yang tersimpan
+        // Restore Pengaturan
         const savedConfig = localStorage.getItem('ebike_config');
         const savedAh = localStorage.getItem('ebike_ah');
         const savedV = localStorage.getItem('ebike_volts');
@@ -285,9 +286,42 @@
             document.getElementById('toggleIcon').innerText = '▼ Buka';
         }
 
+        // Restore Sesi Trip Aktif (Jika Halaman Ter-refresh)
+        const savedActiveTrip = JSON.parse(localStorage.getItem('ebike_active_trip'));
+        if (savedActiveTrip) {
+            isTripActive = true;
+            tripDistance = savedActiveTrip.tripDistance || 0;
+            tripStartTime = new Date(savedActiveTrip.tripStartTime);
+            lastLat = savedActiveTrip.lastLat;
+            lastLon = savedActiveTrip.lastLon;
+
+            document.getElementById('tripDist').innerText = tripDistance.toFixed(2);
+            const btnTrip = document.getElementById('btnTrip');
+            btnTrip.innerText = "⏹ Selesai & Simpan Trip";
+            btnTrip.className = "btn-danger";
+        }
+
         saveAndCalculate();
         renderHistory();
     };
+
+    // --- SCREEN WAKE LOCK API ---
+    async function requestWakeLock() {
+        try {
+            if ('wakeLock' in navigator) {
+                wakeLock = await navigator.wakeLock.request('screen');
+            }
+        } catch (err) {
+            console.warn(`Wake Lock Error: ${err.message}`);
+        }
+    }
+
+    function releaseWakeLock() {
+        if (wakeLock !== null) {
+            wakeLock.release();
+            wakeLock = null;
+        }
+    }
 
     function toggleSettings() {
         const content = document.getElementById('settingsContent');
@@ -305,7 +339,7 @@
         }
     }
 
-    // Fungsi Konversi Voltase ke SOC (%) LiFePO4
+    // Konversi Voltase ke % LiFePO4
     function getLiFePO4SOC(v, config) {
         const series = config === '4S' ? 4 : 16;
         const cellV = v / series;
@@ -344,10 +378,8 @@
         localStorage.setItem('ebike_ah', totalCapAh);
         localStorage.setItem('ebike_volts', volts);
 
-        // Hitung % Awal dari Voltase
         let basePercent = getLiFePO4SOC(volts, config);
 
-        // Konsumsi estimasi ~0.4 Ah per km (sepeda listrik standar 48V)
         const usedAhGPS = tripDistance * 0.4;
         const initialAh = totalCapAh * (basePercent / 100);
         const currentAh = Math.max(0, initialAh - usedAhGPS);
@@ -370,6 +402,7 @@
                     { enableHighAccuracy: true, timeout: 10000, maximumAge: 1000 }
                 );
                 isTracking = true;
+                requestWakeLock(); // Mencegah Layar Mati
                 btnGPS.innerText = "🛑 Matikan GPS";
                 btnGPS.className = "btn-danger";
                 btnTrip.disabled = false;
@@ -377,8 +410,12 @@
                 alert("GPS tidak didukung di browser ini.");
             }
         } else {
+            if (isTripActive && !confirm("Trip sedang berjalan. Yakin ingin mematikan GPS?")) {
+                return;
+            }
             navigator.geolocation.clearWatch(watchId);
             isTracking = false;
+            releaseWakeLock(); // Lepas Wake Lock
             btnGPS.innerText = "📡 Aktifkan GPS";
             btnGPS.className = "btn-primary";
             document.getElementById('speed').innerText = "0.0";
@@ -400,6 +437,15 @@
                 if (delta > 0.003) { // Filter pergerakan > 3m
                     tripDistance += delta;
                     document.getElementById('tripDist').innerText = tripDistance.toFixed(2);
+                    
+                    // Simpan status trip aktif ke localStorage agar tahan refresh
+                    localStorage.setItem('ebike_active_trip', JSON.stringify({
+                        tripDistance: tripDistance,
+                        tripStartTime: tripStartTime,
+                        lastLat: lat,
+                        lastLon: lon
+                    }));
+
                     saveAndCalculate();
                 }
             }
@@ -431,14 +477,19 @@
             tripStartTime = new Date();
 
             document.getElementById('tripDist').innerText = "0.00";
-            btnTrip.innerText = "⏹️️ Selesai & Simpan Trip";
+            btnTrip.innerText = "⏹ Selesai & Simpan Trip";
             btnTrip.className = "btn-danger";
+
+            localStorage.setItem('ebike_active_trip', JSON.stringify({
+                tripDistance: 0,
+                tripStartTime: tripStartTime,
+                lastLat: null,
+                lastLon: null
+            }));
         } else {
             isTripActive = false;
             const tripEndTime = new Date();
             const durationMin = Math.max(1, Math.round((tripEndTime - tripStartTime) / 60000));
-            
-            // Penggunaan Ah terhitung berdasarkan jarak GPS (~0.4 Ah/km)
             const usedAh = (tripDistance * 0.4).toFixed(2);
 
             if (tripDistance > 0.01) {
@@ -455,7 +506,8 @@
                 renderHistory();
             }
 
-            btnTrip.innerText = "▶️ Mulai Trip Baru";
+            localStorage.removeItem('ebike_active_trip');
+            btnTrip.innerText = "▶️️ Mulai Trip Baru";
             btnTrip.className = "btn-success";
         }
     }
@@ -507,4 +559,4 @@
 </script>
 
 </body>
-          </html>
+</html>
