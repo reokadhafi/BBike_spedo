@@ -9,11 +9,13 @@
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&amp;family=Orbitron:wght@500;700;900&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
 <style>
+        /* TEMA DEFAULT: CYBER NEON */
         :root {
             --bg-dark: #07090e;
-            --panel-bg: #0c1017;
-            --panel-border: #1a2332;
-            --panel-glow: rgba(0, 240, 255, 0.15);
+            --bg-gradient: radial-gradient(circle at 50% 20%, #111827 0%, #07090e 80%);
+            --panel-bg: linear-gradient(180deg, #0d131e 0%, #06090e 100%);
+            --panel-border: #1e293b;
+            --panel-card-bg: #0d121b;
             
             --cyan-neon: #00f0ff;
             --cyan-glow: rgba(0, 240, 255, 0.6);
@@ -22,12 +24,129 @@
             --red-neon: #ff0055;
             --red-glow: rgba(255, 0, 85, 0.6);
             --amber-neon: #ffaa00;
-            --orange-neon: #ff6600;
-            --blue-neon: #0077ff;
+            
+            --speed-color: #00f0ff;
+            --speed-glow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.3);
+            --tacho-inactive: #162232;
             
             --text-muted: #5d6f85;
             --text-light: #9eb1c9;
             --text-bright: #ffffff;
+            --icon-pill-bg: #111824;
+            --trip-box-bg: rgba(6, 12, 20, 0.85);
+            --dot-grid-opacity: 0.15;
+        }
+
+        /* TEMA 1: LAYAR KALKULATOR (LCD MONOCHROME) */
+        [data-theme="calculator"] {
+            --bg-dark: #9da892;
+            --bg-gradient: radial-gradient(circle at 50% 20%, #a8b39d 0%, #8b9680 80%);
+            --panel-bg: linear-gradient(180deg, #8fa082 0%, #7d8e70 100%);
+            --panel-border: #56634c;
+            --panel-card-bg: #829275;
+            
+            --cyan-neon: #111810;
+            --cyan-glow: rgba(0, 0, 0, 0.15);
+            --green-neon: #182216;
+            --green-glow: rgba(0, 0, 0, 0.1);
+            --red-neon: #2a0808;
+            --red-glow: rgba(0, 0, 0, 0.1);
+            --amber-neon: #222010;
+            
+            --speed-color: #0f150e;
+            --speed-glow: 0 0 1px rgba(0, 0, 0, 0.4);
+            --tacho-inactive: #6c7b60;
+            
+            --text-muted: #434e3b;
+            --text-light: #232c1e;
+            --text-bright: #090e08;
+            --icon-pill-bg: #758568;
+            --trip-box-bg: rgba(118, 133, 107, 0.85);
+            --dot-grid-opacity: 0.25;
+        }
+
+        /* TEMA 2: AMBER CLASSIC */
+        [data-theme="amber"] {
+            --bg-dark: #0f0a02;
+            --bg-gradient: radial-gradient(circle at 50% 20%, #241403 0%, #0f0a02 80%);
+            --panel-bg: linear-gradient(180deg, #1f1103 0%, #0a0601 100%);
+            --panel-border: #3d2306;
+            --panel-card-bg: #1a0f03;
+            
+            --cyan-neon: #ffaa00;
+            --cyan-glow: rgba(255, 170, 0, 0.6);
+            --green-neon: #ffaa00;
+            --green-glow: rgba(255, 170, 0, 0.5);
+            --red-neon: #ff3300;
+            --red-glow: rgba(255, 51, 0, 0.6);
+            --amber-neon: #ff8800;
+            
+            --speed-color: #ffaa00;
+            --speed-glow: 0 0 20px rgba(255, 170, 0, 0.6);
+            --tacho-inactive: #2b1905;
+            
+            --text-muted: #80561d;
+            --text-light: #d19945;
+            --text-bright: #fff2d6;
+            --icon-pill-bg: #241504;
+            --trip-box-bg: rgba(20, 10, 2, 0.85);
+            --dot-grid-opacity: 0.15;
+        }
+
+        /* TEMA 3: OLED DARK MONOCHROME */
+        [data-theme="monochrome"] {
+            --bg-dark: #000000;
+            --bg-gradient: #000000;
+            --panel-bg: #0a0a0a;
+            --panel-border: #222222;
+            --panel-card-bg: #111111;
+            
+            --cyan-neon: #ffffff;
+            --cyan-glow: rgba(255, 255, 255, 0.4);
+            --green-neon: #cccccc;
+            --green-glow: rgba(204, 204, 204, 0.3);
+            --red-neon: #ffffff;
+            --red-glow: rgba(255, 255, 255, 0.5);
+            --amber-neon: #aaaaaa;
+            
+            --speed-color: #ffffff;
+            --speed-glow: 0 0 15px rgba(255, 255, 255, 0.5);
+            --tacho-inactive: #222222;
+            
+            --text-muted: #666666;
+            --text-light: #aaaaaa;
+            --text-bright: #ffffff;
+            --icon-pill-bg: #181818;
+            --trip-box-bg: rgba(15, 15, 15, 0.9);
+            --dot-grid-opacity: 0.08;
+        }
+
+        /* TEMA 4: RACING RED */
+        [data-theme="racing-red"] {
+            --bg-dark: #0f0305;
+            --bg-gradient: radial-gradient(circle at 50% 20%, #26060a 0%, #0f0305 80%);
+            --panel-bg: linear-gradient(180deg, #1c0508 0%, #080102 100%);
+            --panel-border: #420d14;
+            --panel-card-bg: #170407;
+            
+            --cyan-neon: #ff0055;
+            --cyan-glow: rgba(255, 0, 85, 0.6);
+            --green-neon: #ff2a00;
+            --green-glow: rgba(255, 42, 0, 0.5);
+            --red-neon: #ff0033;
+            --red-glow: rgba(255, 0, 51, 0.7);
+            --amber-neon: #ff6600;
+            
+            --speed-color: #ff0055;
+            --speed-glow: 0 0 20px rgba(255, 0, 85, 0.6);
+            --tacho-inactive: #2e080e;
+            
+            --text-muted: #853342;
+            --text-light: #d68190;
+            --text-bright: #ffffff;
+            --icon-pill-bg: #24060b;
+            --trip-box-bg: rgba(20, 3, 6, 0.85);
+            --dot-grid-opacity: 0.15;
         }
 
         * {
@@ -39,12 +158,13 @@
 
         body {
             font-family: 'Rajdhani', -apple-system, sans-serif;
-            background: radial-gradient(circle at 50% 20%, #111827 0%, var(--bg-dark) 80%);
+            background: var(--bg-gradient);
             color: var(--text-light);
             min-height: 100vh;
             padding: 14px 12px 30px;
             display: flex;
             justify-content: center;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         .dashboard-wrapper {
@@ -55,17 +175,17 @@
             gap: 14px;
         }
 
-        /* Top Brand Bar */
         .top-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 8px 14px;
-            background: rgba(12, 16, 23, 0.8);
+            background: var(--panel-card-bg);
             border: 1px solid var(--panel-border);
             border-radius: 12px;
             font-family: 'Chakra Petch', sans-serif;
             backdrop-filter: blur(6px);
+            transition: all 0.3s ease;
         }
 
         .brand-title {
@@ -80,12 +200,13 @@
         }
 
         .brand-badge {
-            background: linear-gradient(135deg, var(--cyan-neon), #0088ff);
-            color: #000;
+            background: var(--cyan-neon);
+            color: var(--bg-dark);
             font-size: 0.65rem;
             font-weight: 900;
             padding: 2px 6px;
             border-radius: 4px;
+            transition: all 0.3s ease;
         }
 
         .clock-display {
@@ -97,48 +218,49 @@
             display: flex;
             align-items: baseline;
             gap: 4px;
+            transition: all 0.3s ease;
         }
 
         .clock-ampm {
             font-size: 0.65rem;
-            color: #67e8f9;
+            color: var(--cyan-neon);
             font-weight: 900;
+            opacity: 0.8;
         }
 
-        /* DIGITAL INSTRUMENT CLUSTER */
         .cluster-panel {
-            background: linear-gradient(180deg, #0d131e 0%, #06090e 100%);
-            border: 2px solid #1e293b;
+            background: var(--panel-bg);
+            border: 2px solid var(--panel-border);
             border-radius: 20px;
             padding: 16px 16px 14px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         .cluster-panel::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(#1e293b 1px, transparent 1px);
+            background-image: radial-gradient(var(--text-bright) 1px, transparent 1px);
             background-size: 8px 8px;
-            opacity: 0.15;
+            opacity: var(--dot-grid-opacity);
             pointer-events: none;
         }
 
-        /* Indicator Icons Bar */
         .cluster-top-indicators {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 6px 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid var(--panel-border);
             margin-bottom: 8px;
         }
 
         .turn-signal {
             font-size: 1.3rem;
-            color: #213042;
+            color: var(--text-muted);
             transition: all 0.2s;
             cursor: pointer;
         }
@@ -162,31 +284,31 @@
         .icon-pill {
             padding: 2px 7px;
             border-radius: 4px;
-            background: #111824;
-            color: #3b4d61;
+            background: var(--icon-pill-bg);
+            color: var(--text-muted);
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.7rem;
-            border: 1px solid #1a2636;
+            border: 1px solid var(--panel-border);
             transition: all 0.3s;
             cursor: pointer;
         }
 
         .icon-pill.active-green {
-            background: rgba(0, 255, 136, 0.15);
+            background: var(--icon-pill-bg);
             color: var(--green-neon);
             border-color: var(--green-neon);
             text-shadow: 0 0 6px var(--green-glow);
         }
 
         .icon-pill.active-blue {
-            background: rgba(0, 119, 255, 0.2);
-            color: #38bdf8;
-            border-color: #38bdf8;
-            text-shadow: 0 0 6px rgba(56, 189, 248, 0.5);
+            background: var(--icon-pill-bg);
+            color: var(--cyan-neon);
+            border-color: var(--cyan-neon);
+            text-shadow: 0 0 6px var(--cyan-glow);
         }
 
         .icon-pill.active-red {
-            background: rgba(255, 0, 85, 0.2);
+            background: var(--icon-pill-bg);
             color: var(--red-neon);
             border-color: var(--red-neon);
             text-shadow: 0 0 8px var(--red-glow);
@@ -198,7 +320,6 @@
             to { opacity: 1; }
         }
 
-        /* ARC TACHOMETER / SPEED GAUGE */
         .tachometer-wrap {
             position: relative;
             width: 100%;
@@ -218,7 +339,6 @@
             transition: fill 0.18s ease, opacity 0.18s ease, filter 0.18s ease;
         }
 
-        /* Speed & Trip Central Vertical Display */
         .speed-gear-center {
             position: absolute;
             top: 14px;
@@ -236,9 +356,9 @@
             font-size: 2.3rem;
             font-weight: 900;
             line-height: 0.85;
-            color: #00f0ff;
+            color: var(--speed-color);
             letter-spacing: -2px;
-            text-shadow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.3);
+            text-shadow: var(--speed-glow);
             transition: color 0.25s ease, text-shadow 0.25s ease;
         }
 
@@ -253,17 +373,17 @@
             transition: color 0.25s ease;
         }
 
-        /* Inline Compact Trip Display directly below Speed Unit */
         .trip-center-box {
             display: flex;
             align-items: center;
             margin-top: 15px;
             gap: 6px;
-            background: rgba(6, 12, 20, 0.85);
+            background: var(--trip-box-bg);
             padding: 2px 10px;
             border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--panel-border);
             pointer-events: auto;
+            transition: all 0.3s ease;
         }
 
         .trip-sub-item {
@@ -285,11 +405,11 @@
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.58rem;
             font-weight: 700;
-            color: #94a3b8;
+            color: var(--text-muted);
         }
 
         .trip-divider {
-            color: #334155;
+            color: var(--text-muted);
             font-size: 0.7rem;
         }
 
@@ -297,27 +417,27 @@
             font-family: 'Orbitron', monospace;
             font-size: 1.3rem;
             font-weight: 800;
-            color: red;
-            text-shadow: 0 0 6px rgba(255, 0, 85, 0.6);
+            color: var(--red-neon);
+            text-shadow: 0 0 6px var(--red-glow);
             line-height: 1;
         }
 
-        /* Power & Battery Segment Level */
         .bottom-telemetry-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
             margin-top: 6px;
             padding-top: 10px;
-            border-top: 1px dashed rgba(255,255,255,0.08);
+            border-top: 1px dashed var(--panel-border);
         }
 
         .telemetry-cell {
-            background: rgba(16, 23, 36, 0.6);
-            border: 1px solid rgba(255,255,255,0.05);
+            background: var(--icon-pill-bg);
+            border: 1px solid var(--panel-border);
             border-radius: 10px;
             padding: 9px 12px;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         .cell-head {
@@ -327,7 +447,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             font-weight: 700;
-            color: #6b7c93;
+            color: var(--text-muted);
             margin-bottom: 4px;
             letter-spacing: 0.5px;
         }
@@ -350,7 +470,7 @@
         .volts-progress-bar {
             width: 100%;
             height: 6px;
-            background: #151d28;
+            background: var(--tacho-inactive);
             border-radius: 3px;
             margin-top: 7px;
             overflow: hidden;
@@ -358,7 +478,7 @@
         }
         .volts-progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #0284c7, var(--cyan-neon));
+            background: var(--cyan-neon);
             box-shadow: 0 0 8px var(--cyan-glow);
             transition: width 0.3s ease;
         }
@@ -372,7 +492,7 @@
 
         .battery-segment-bar .seg {
             flex: 1;
-            background: #1c2738;
+            background: var(--tacho-inactive);
             border-radius: 2px;
             transition: all 0.3s;
         }
@@ -392,7 +512,6 @@
             box-shadow: 0 0 6px var(--red-glow);
         }
 
-        /* Controls: Action Buttons */
         .action-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -410,35 +529,40 @@
             font-size: 0.95rem;
             font-weight: 700;
             letter-spacing: 0.5px;
-            border: none;
+            border: 1px solid var(--panel-border);
             cursor: pointer;
             transition: all 0.2s;
         }
 
         .btn-gps {
-            background: linear-gradient(135deg, #0284c7, #0369a1);
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3);
+            background: var(--panel-card-bg);
+            color: var(--green-neon);
+            border-color: var(--green-neon);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
         }
         .btn-gps.active {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+            background: var(--red-neon);
+            color: var(--bg-dark);
+            border-color: var(--red-neon);
+            animation: pulse-border 1.5s infinite;
         }
 
         .btn-trip {
-            background: linear-gradient(135deg, #059669, #047857);
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+            background: var(--panel-card-bg);
+            color: var(--green-neon);
+            border-color: var(--green-neon);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
         }
         .btn-trip.recording {
-            background: linear-gradient(135deg, #e11d48, #be123c);
-            box-shadow: 0 4px 14px rgba(225, 29, 72, 0.4);
+            background: var(--red-neon);
+            color: var(--bg-dark);
+            border-color: var(--red-neon);
             animation: pulse-border 1.5s infinite;
         }
 
         .btn-set-battery {
-            background: linear-gradient(135deg, var(--cyan-neon), #0088ff);
-            color: #000;
+            background: var(--cyan-neon);
+            color: var(--bg-dark);
             font-family: 'Chakra Petch', sans-serif;
             font-size: 0.85rem;
             font-weight: 800;
@@ -455,7 +579,7 @@
         }
 
         .btn-reset-odo {
-            background: rgba(255, 0, 85, 0.15);
+            background: transparent;
             color: var(--red-neon);
             border: 1px solid var(--red-neon);
             border-radius: 6px;
@@ -469,22 +593,22 @@
         }
         .btn-reset-odo:hover {
             background: var(--red-neon);
-            color: #fff;
+            color: var(--bg-dark);
             box-shadow: 0 0 8px var(--red-glow);
         }
 
         @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.5); }
-            70% { box-shadow: 0 0 0 10px rgba(225, 29, 72, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(225, 29, 72, 0); }
+            0% { box-shadow: 0 0 0 0 var(--red-glow); }
+            70% { box-shadow: 0 0 0 10px rgba(0,0,0,0); }
+            100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
         }
 
-        /* Collapsible Settings Card */
         .panel-card {
-            background: #0d121b;
+            background: var(--panel-card-bg);
             border: 1px solid var(--panel-border);
             border-radius: 12px;
             padding: 12px 14px;
+            transition: all 0.3s ease;
         }
 
         .card-header-toggle {
@@ -512,7 +636,7 @@
 
         label {
             font-size: 0.75rem;
-            color: #64748b;
+            color: var(--text-muted);
             margin-bottom: 4px;
             display: block;
         }
@@ -520,19 +644,19 @@
         input, select {
             width: 100%;
             padding: 9px 10px;
-            background: #07090e;
-            border: 1px solid #1e293b;
+            background: var(--bg-dark);
+            border: 1px solid var(--panel-border);
             border-radius: 6px;
-            color: #fff;
+            color: var(--text-bright);
             font-family: inherit;
             font-size: 0.85rem;
+            transition: all 0.3s ease;
         }
         input:focus, select:focus {
             outline: none;
             border-color: var(--cyan-neon);
         }
 
-        /* History Trip List */
         .history-list {
             display: flex;
             flex-direction: column;
@@ -543,8 +667,8 @@
         }
 
         .history-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid #182230;
+            background: rgba(0,0,0,0.1);
+            border: 1px solid var(--panel-border);
             border-radius: 6px;
             padding: 8px 10px;
             display: flex;
@@ -556,10 +680,17 @@
         .hist-del-btn {
             background: transparent;
             border: none;
-            color: #ff0055;
+            color: var(--red-neon);
             cursor: pointer;
             font-size: 0.85rem;
             padding: 4px;
+        }
+
+        .theme-select-box {
+            background: var(--bg-dark);
+            border: 1px solid var(--cyan-neon);
+            color: var(--cyan-neon);
+            font-weight: 700;
         }
 
         .hidden { display: none !important; }
@@ -567,7 +698,6 @@
 </head>
 <body>
 <div class="dashboard-wrapper">
-<!-- Top System Header with 12-Hour AM/PM Clock -->
 <div class="top-bar">
 <div class="brand-title">
 <span class="brand-badge">PRO</span>
@@ -578,9 +708,7 @@
 <span class="clock-ampm" id="liveClockAmPm">PM</span>
 </div>
 </div>
-<!-- DIGITAL COCKPIT INSTRUMENT -->
 <div class="cluster-panel">
-<!-- Status Telltale Lights -->
 <div class="cluster-top-indicators">
 <span class="turn-signal" id="leftSignal" onclick="toggleTurn('left')">◀</span>
 <div class="indicator-icons-row">
@@ -590,7 +718,6 @@
 </div>
 <span class="turn-signal" id="rightSignal" onclick="toggleTurn('right')">▶</span>
 </div>
-<!-- Dynamic Segmented Half-Circle Speedometer Arc -->
 <div class="tachometer-wrap">
 <svg class="tacho-svg" id="tachoSvg" viewbox="0 0 360 145">
 <g id="segmentedArcGroup"></g>
@@ -599,7 +726,6 @@
 <div class="speed-gear-center">
 <div class="digital-speed" id="speedVal">0</div>
 <div class="speed-unit" id="speedUnitText">KM/H</div>
-<!-- Inline Compact Trip & Range Display directly below KM/H -->
 <div class="trip-center-box">
 <div class="trip-sub-item" title="Jarak Trip Saat Ini">
 <span class="trip-center-val" id="centerTripVal">0.75</span>
@@ -607,16 +733,14 @@
 </div>
 <span class="trip-divider">|</span>
 <div class="trip-sub-item" title="Estimasi Sisa Jarak Baterai">
-<span class="trip-center-unit" style="color:#64748b;">REM:</span>
+<span class="trip-center-unit" style="color:var(--text-muted);">REM:</span>
 <span class="range-center-val" id="centerRangeVal">42.5</span>
 <span class="trip-center-unit">KM</span>
 </div>
 </div>
 </div>
 </div>
-<!-- Telemetry Bottom Info -->
 <div class="bottom-telemetry-grid">
-<!-- LEFT: DIGITAL VOLTMETER -->
 <div class="telemetry-cell">
 <div class="cell-head">
 <span>VOLTMETER</span>
@@ -626,12 +750,11 @@
 <div class="volts-progress-bar">
 <div class="volts-progress-fill" id="voltFillBar" style="width: 78%;"></div>
 </div>
-<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:#64748b;">
-<span><strong id="odoVal" style="color:#cbd5e1;">0.00</strong> km</span>
-<span id="tripTimerBadge" style="color:#94a3b8; font-family:'Orbitron';">00:00</span>
+<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:var(--text-muted);">
+<span><strong id="odoVal" style="color:var(--text-bright);">0.00</strong> km</span>
+<span id="tripTimerBadge" style="color:var(--text-light); font-family:'Orbitron';">00:00</span>
 </div>
 </div>
-<!-- RIGHT: BATTERY STATUS -->
 <div class="telemetry-cell">
 <div class="cell-head">
 <span>STATUS BATERAI</span>
@@ -650,14 +773,13 @@
 <div class="seg"></div>
 <div class="seg"></div>
 </div>
-<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:#64748b;">
+<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:var(--text-muted);">
 <span id="sysProfileBadge">LiFePO4 16S</span>
 <span id="capTotalLabel">20.00 Ah</span>
 </div>
 </div>
 </div>
 </div>
-<!-- ACTION BUTTONS: GPS TRACKING & TRIP -->
 <div class="action-grid">
 <button class="action-btn btn-gps" id="btnGPS" onclick="toggleGPS()">
 <span>📡</span>
@@ -668,16 +790,27 @@
 <span id="txtTrip">Mulai Trip</span>
 </button>
 </div>
-<!-- PENGATURAN BATERAI & KALIBRASI VOLTASE -->
 <div class="panel-card">
 <div class="card-header-toggle" onclick="toggleCollapse('settingsBody', 'settingsArrow')">
 <div class="card-title">
 <span>⚙️</span>
-<span>Kalibrasi &amp; Konfigurasi Baterai</span>
+<span>Kalibrasi, Tema &amp; Konfigurasi</span>
 </div>
-<span id="settingsArrow" style="color:#64748b; font-size:0.8rem;">▼ Buka</span>
+<span id="settingsArrow" style="color:var(--text-muted); font-size:0.8rem;">▼ Buka</span>
 </div>
-<div class="hidden" id="settingsBody" style="margin-top:10px; border-top:1px solid #1a2433; padding-top:10px;">
+<div class="hidden" id="settingsBody" style="margin-top:10px; border-top:1px solid var(--panel-border); padding-top:10px;">
+
+<div style="margin-bottom: 12px; background: rgba(0,0,0,0.15); padding: 10px; border-radius: 8px; border: 1px solid var(--panel-border);">
+<label style="font-weight:700; color:var(--cyan-neon); margin-bottom: 6px;">🎨 Pilih Tema Warna Display:</label>
+<select class="theme-select-box" id="themeSelector" onchange="applyTheme(this.value)">
+<option value="calculator">📟 Kalkulator (LCD Monochrome Gray-Green)</option>
+<option selected="" value="default">🌐 Cyber Neon (Default Blue/Green)</option>
+<option value="amber">📻 Amber Classic (Retro Orange)</option>
+<option value="monochrome">🔲 OLED Monochrome (Black &amp; White)</option>
+<option value="racing-red">🏎️ Racing Red (Sporty Red)</option>
+</select>
+</div>
+
 <div class="form-row">
 <div>
 <label>Jenis Kimia Baterai</label>
@@ -718,7 +851,7 @@
 </div>
 </div>
 <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
-<span style="font-size:0.75rem; color:#64748b; max-width:65%;">
+<span style="font-size:0.75rem; color:var(--text-muted); max-width:65%;">
 *Klik tombol <strong>Set Baterai</strong> untuk kalibrasi ulang voltase riil, estimasi sisa jarak, &amp; persen SoC.
 </span>
 <button class="btn-set-battery" onclick="recalculateBattery()">⚙️ Set Baterai</button>
@@ -737,28 +870,27 @@
 </div>
 </div>
 </div>
-<!-- RIWAYAT PERJALANAN (TRIP LOG) -->
 <div class="panel-card">
 <div class="card-header-toggle" onclick="toggleCollapse('historyBody', 'histArrow')">
 <div class="card-title">
 <span>📜</span>
 <span>Log Riwayat Perjalanan</span>
 </div>
-<span id="histArrow" style="color:#64748b; font-size:0.8rem;">▼ Buka</span>
+<span id="histArrow" style="color:var(--text-muted); font-size:0.8rem;">▼ Buka</span>
 </div>
-<div class="hidden" id="historyBody" style="margin-top:10px; border-top:1px solid #1a2433; padding-top:10px;">
+<div class="hidden" id="historyBody" style="margin-top:10px; border-top:1px solid var(--panel-border); padding-top:10px;">
 <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
-<div style="background:#090d14; padding:8px; border-radius:6px; text-align:center;">
-<div style="font-size:0.7rem; color:#64748b;">TOTAL JARAK TERCATAT</div>
+<div style="background:var(--bg-dark); padding:8px; border-radius:6px; border:1px solid var(--panel-border); text-align:center;">
+<div style="font-size:0.7rem; color:var(--text-muted);">TOTAL JARAK TERCATAT</div>
 <div id="histTotalKm" style="font-family:'Orbitron'; font-size:1.1rem; color:var(--cyan-neon);">0.00 km</div>
 </div>
-<div style="background:#090d14; padding:8px; border-radius:6px; text-align:center;">
-<div style="font-size:0.7rem; color:#64748b;">TOTAL ENERGI TERPAKAI</div>
+<div style="background:var(--bg-dark); padding:8px; border-radius:6px; border:1px solid var(--panel-border); text-align:center;">
+<div style="font-size:0.7rem; color:var(--text-muted);">TOTAL ENERGI TERPAKAI</div>
 <div id="histTotalAh" style="font-family:'Orbitron'; font-size:1.1rem; color:var(--green-neon);">0.00 Ah</div>
 </div>
 </div>
 <div class="history-list" id="historyItemsContainer"></div>
-<button onclick="clearAllHistory()" style="margin-top:10px; width:100%; background:transparent; border:1px solid #334155; color:#94a3b8; padding:8px; border-radius:6px; font-size:0.75rem; cursor:pointer;">
+<button onclick="clearAllHistory()" style="margin-top:10px; width:100%; background:transparent; border:1px solid var(--panel-border); color:var(--text-light); padding:8px; border-radius:6px; font-size:0.75rem; cursor:pointer;">
                 🗑️ Bersihkan Semua Catatan
             </button>
 </div>
@@ -794,6 +926,9 @@
         setInterval(updateClock, 1000);
         updateClock();
 
+        const savedTheme = localStorage.getItem('ebike_theme') || 'default';
+        applyTheme(savedTheme);
+
         const savedLimit = localStorage.getItem('ebike_max_speed');
         if (savedLimit) maxSpeedLimit = parseFloat(savedLimit) || 50;
         document.getElementById('inputMaxSpeed').value = maxSpeedLimit;
@@ -812,7 +947,6 @@
         if (savedConfig) document.getElementById('configSys').value = savedConfig;
         if (savedChem) document.getElementById('configChemistry').value = savedChem;
 
-        // Load & display initial Odometer value
         document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         document.getElementById('inputOdoVal').value = odoDistance.toFixed(2);
 
@@ -822,6 +956,17 @@
 
         requestAnimationFrame(speedAnimationLoop);
     });
+
+    function applyTheme(themeName) {
+        if (themeName === 'default') {
+            document.documentElement.removeAttribute('data-theme');
+        } else {
+            document.documentElement.setAttribute('data-theme', themeName);
+        }
+        localStorage.setItem('ebike_theme', themeName);
+        document.getElementById('themeSelector').value = themeName;
+        buildSegmentedArc();
+    }
 
     function updateClock() {
         const now = new Date();
@@ -854,6 +999,11 @@
         const segStep = totalSpan / TOTAL_SEGMENTS;
         const segWidthDeg = segStep * 0.72;
 
+        const computedStyle = getComputedStyle(document.documentElement);
+        const inactiveColor = computedStyle.getPropertyValue('--tacho-inactive').trim() || '#162232';
+        const textColor = computedStyle.getPropertyValue('--text-muted').trim() || '#475569';
+        const maxTextColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
+
         for (let i = 0; i < TOTAL_SEGMENTS; i++) {
             const a1 = startAngle - (i * segStep);
             const a2 = a1 - segWidthDeg;
@@ -863,7 +1013,7 @@
             path.setAttribute('d', pathD);
             path.setAttribute('class', 'speed-block');
             path.setAttribute('id', `spd-seg-${i}`);
-            path.setAttribute('fill', '#162232');
+            path.setAttribute('fill', inactiveColor);
             path.setAttribute('opacity', '0.4');
             segGroup.appendChild(path);
         }
@@ -882,7 +1032,7 @@
             text.setAttribute('x', tx);
             text.setAttribute('y', ty);
             text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('fill', t === ticksCount ? '#ff0055' : '#475569');
+            text.setAttribute('fill', t === ticksCount ? maxTextColor : textColor);
             text.setAttribute('font-size', '9');
             text.setAttribute('font-weight', '700');
             text.setAttribute('font-family', "'Chakra Petch', sans-serif");
@@ -965,56 +1115,74 @@
 
         const ratio = Math.min(1, Math.max(0, currentSpeed / maxSpeedLimit));
         
-        let activeColor = '#00f0ff';
-        let glowColor = 'rgba(0, 240, 255, 0.6)';
+        const computedStyle = getComputedStyle(document.documentElement);
+        const currentTheme = localStorage.getItem('ebike_theme') || 'default';
+        const inactiveColor = computedStyle.getPropertyValue('--tacho-inactive').trim() || '#162232';
 
-        if (ratio > 0.82) {
-            activeColor = '#ff0055';
-            glowColor = 'rgba(255, 0, 85, 0.7)';
-        } else if (ratio > 0.62) {
-            activeColor = '#ff6600';
-            glowColor = 'rgba(255, 102, 0, 0.7)';
-        } else if (ratio > 0.38) {
-            activeColor = '#ffaa00';
-            glowColor = 'rgba(255, 170, 0, 0.6)';
-        } else if (ratio > 0.18) {
-            activeColor = '#00ff88';
-            glowColor = 'rgba(0, 255, 136, 0.6)';
+        // Warna teks angka kecepatan berdasarkan zona rasio kecepatan
+        let textSpeedColor = computedStyle.getPropertyValue('--green-neon').trim() || '#00ff88';
+        let textSpeedGlow = computedStyle.getPropertyValue('--green-glow').trim() || 'rgba(0, 255, 136, 0.6)';
+
+        if (currentTheme === 'calculator' || currentTheme === 'monochrome') {
+            textSpeedColor = computedStyle.getPropertyValue('--cyan-neon').trim();
+            textSpeedGlow = computedStyle.getPropertyValue('--cyan-glow').trim();
+        } else {
+            if (ratio > 0.8) {
+                textSpeedColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
+                textSpeedGlow = computedStyle.getPropertyValue('--red-glow').trim() || 'rgba(255, 0, 85, 0.7)';
+            } else if (ratio > 0.5) {
+                textSpeedColor = computedStyle.getPropertyValue('--amber-neon').trim() || '#ffaa00';
+                textSpeedGlow = 'rgba(255, 170, 0, 0.6)';
+            }
         }
 
-        speedEl.style.color = activeColor;
-        speedEl.style.textShadow = `0 0 20px ${glowColor}, 0 0 40px ${glowColor}`;
-        unitEl.style.color = activeColor;
+        speedEl.style.color = textSpeedColor;
+        speedEl.style.textShadow = currentTheme === 'calculator' ? 'none' : `0 0 20px ${textSpeedGlow}`;
+        unitEl.style.color = textSpeedColor;
 
         const activeBlocksCount = ratio * TOTAL_SEGMENTS;
         for (let i = 0; i < TOTAL_SEGMENTS; i++) {
             const seg = document.getElementById(`spd-seg-${i}`);
             if (!seg) continue;
 
-            const blockRatio = i / TOTAL_SEGMENTS;
-            let blockColor = '#00f0ff';
-            if (blockRatio > 0.8) blockColor = '#ff0055';
-            else if (blockRatio > 0.6) blockColor = '#ff6600';
-            else if (blockRatio > 0.35) blockColor = '#ffaa00';
-            else if (blockRatio > 0.15) blockColor = '#00ff88';
+            const blockRatio = i / (TOTAL_SEGMENTS - 1);
+            let blockColor;
+
+            // Gradasi warna segmen spesifik sesuai rentang Kecepatan Rendah -> Tinggi
+            if (currentTheme === 'calculator' || currentTheme === 'monochrome') {
+                blockColor = computedStyle.getPropertyValue('--cyan-neon').trim();
+            } else if (currentTheme === 'amber') {
+                blockColor = computedStyle.getPropertyValue('--amber-neon').trim();
+            } else if (currentTheme === 'racing-red') {
+                blockColor = computedStyle.getPropertyValue('--red-neon').trim();
+            } else {
+                // Default Tema: Hijau (Rendah) -> Amber/Kuning (Sedang) -> Merah (Tinggi)
+                if (blockRatio > 0.8) {
+                    blockColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
+                } else if (blockRatio > 0.5) {
+                    blockColor = computedStyle.getPropertyValue('--amber-neon').trim() || '#ffaa00';
+                } else {
+                    blockColor = computedStyle.getPropertyValue('--green-neon').trim() || '#00ff88';
+                }
+            }
 
             if (i < Math.floor(activeBlocksCount)) {
                 seg.setAttribute('fill', blockColor);
                 seg.setAttribute('opacity', '1');
-                seg.style.filter = `drop-shadow(0 0 4px ${blockColor})`;
+                seg.style.filter = currentTheme === 'calculator' ? 'none' : `drop-shadow(0 0 4px ${blockColor})`;
             } else if (i === Math.floor(activeBlocksCount)) {
                 const partial = activeBlocksCount - Math.floor(activeBlocksCount);
                 if (partial > 0.1) {
                     seg.setAttribute('fill', blockColor);
                     seg.setAttribute('opacity', (0.3 + partial * 0.7).toFixed(2));
-                    seg.style.filter = `drop-shadow(0 0 2px ${blockColor})`;
+                    seg.style.filter = currentTheme === 'calculator' ? 'none' : `drop-shadow(0 0 2px ${blockColor})`;
                 } else {
-                    seg.setAttribute('fill', '#162232');
+                    seg.setAttribute('fill', inactiveColor);
                     seg.setAttribute('opacity', '0.35');
                     seg.style.filter = 'none';
                 }
             } else {
-                seg.setAttribute('fill', '#162232');
+                seg.setAttribute('fill', inactiveColor);
                 seg.setAttribute('opacity', '0.35');
                 seg.style.filter = 'none';
             }
@@ -1044,9 +1212,6 @@
         }
     }
 
-    /* ===================================================
-       TEST / SIMULASI MODE
-       =================================================== */
     function toggleTestMode() {
         const pill = document.getElementById('pillTestMode');
         isTestModeActive = !isTestModeActive;
@@ -1071,7 +1236,7 @@
                 }
 
                 if (targetSpeed > 0) {
-                    const deltaDist = (targetSpeed / 3600) * 0.3; // Simulasi pergerakan jarak
+                    const deltaDist = (targetSpeed / 3600) * 0.3;
                     updateOdometerAndTrip(deltaDist);
 
                     if (isTripRunning) {
@@ -1086,9 +1251,6 @@
         }
     }
 
-    /* ===================================================
-       BATTERY SOCH & CHEMISTRY CALCULATOR
-       =================================================== */
     function calculateSoC(voltage, chem, seriesStr) {
         const series = parseInt(seriesStr) || 16;
         const cellV = voltage / series;
@@ -1175,19 +1337,29 @@
     }
 
     function consumeBattery(deltaAh) {
-        const totalCap = parseFloat(document.getElementById('inputCapacity').value) || 20;
-        const chem = document.getElementById('configChemistry').value;
-        const config = document.getElementById('configSys').value;
+    const totalCap = parseFloat(document.getElementById('inputCapacity').value) || 20;
+    const chem = document.getElementById('configChemistry').value;
+    const config = document.getElementById('configSys').value;
 
-        currentRemainingAh = Math.max(0, currentRemainingAh - deltaAh);
-        batteryPercent = Math.max(0, Math.min(100, Math.round((currentRemainingAh / totalCap) * 100)));
-        updateDisplays(totalCap, config, chem);
+    // 1. Kurangi sisa kapasitas Ah
+    currentRemainingAh = Math.max(0, currentRemainingAh - deltaAh);
+    batteryPercent = Math.max(0, Math.min(100, Math.round((currentRemainingAh / totalCap) * 100)));
+
+    // 2. Turunkan voltase secara realistis berdasarkan Ah yang terpakai
+    // Asumsi: Baterai habis total saat voltase turun ~12V - 15V dari posisi penuh
+    const voltDropPerAh = 0.15; // Penurunan voltase per Ah terpakai
+    currentVoltage = Math.max(0, currentVoltage - (deltaAh * voltDropPerAh));
+
+    // 3. Update input voltase di menu pengaturan agar sinkron
+    document.getElementById('inputVolts').value = currentVoltage.toFixed(2);
+
+    // 4. Perbarui tampilan UI
+    updateDisplays(totalCap, config, chem);
     }
 
     function updateDisplays(totalCap, config, chem) {
         document.getElementById('voltMainVal').innerHTML = currentVoltage.toFixed(2) + "<span>V</span>";
         
-        // Update Estimasi Sisa Jarak Tempuh (KM)
         const estimatedRange = (batteryPercent / 100) * maxRangeKm;
         document.getElementById('centerRangeVal').innerText = estimatedRange.toFixed(1);
 
@@ -1275,7 +1447,7 @@
             navigator.geolocation.clearWatch(gpsWatchId);
             isGPSActive = false;
             btn.classList.remove('active');
-            txt.innerText = "Aktifkan GPS Realtime";
+            txt.innerText = "Aktifkan GPS";
             if (wakeLock) wakeLock.release();
         }
     }
@@ -1325,7 +1497,7 @@
             currentTripDistance = 0;
             tripStartTime = new Date();
             btn.classList.add('recording');
-            txt.innerText = "Selesai & Simpan Trip";
+            txt.innerText = "Selesai Trip";
 
             document.getElementById('centerTripVal').innerText = "0.00";
             document.getElementById('tripTimerBadge').innerText = "00:00";
@@ -1341,7 +1513,7 @@
             isTripRunning = false;
             clearInterval(tripIntervalTimer);
             btn.classList.remove('recording');
-            txt.innerText = "Mulai Trip Baru";
+            txt.innerText = "Mulai Trip";
 
             const elapsedMin = Math.max(1, Math.round((new Date() - tripStartTime) / 60000));
             const usedAh = (currentTripDistance * 0.35).toFixed(2);
@@ -1371,7 +1543,7 @@
         let sumAh = 0;
 
         if (historyRecords.length === 0) {
-            list.innerHTML = `<div style="text-align:center; color:#64748b; font-size:0.75rem; padding:12px;">Belum ada sesi trip tersimpan.</div>`;
+            list.innerHTML = `<div style="text-align:center; color:var(--text-muted); font-size:0.75rem; padding:12px;">Belum ada sesi trip tersimpan.</div>`;
         } else {
             historyRecords.forEach(item => {
                 sumDist += parseFloat(item.dist);
@@ -1381,9 +1553,9 @@
                 div.className = 'history-card';
                 div.innerHTML = `
                     <div>
-                        <span style="font-weight:700; color:#fff;">${item.dist} km</span> 
-                        <span style="color:#64748b; font-size:0.7rem;">(${item.duration}m)</span>
-                        <div style="font-size:0.7rem; color:#64748b;">${item.date} • <span style="color:var(--cyan-neon);">${item.ah} Ah</span></div>
+                        <span style="font-weight:700; color:var(--text-bright);">${item.dist} km</span> 
+                        <span style="color:var(--text-muted); font-size:0.7rem;">(${item.duration}m)</span>
+                        <div style="font-size:0.7rem; color:var(--text-muted);">${item.date} • <span style="color:var(--cyan-neon);">${item.ah} Ah</span></div>
                     </div>
                     <button class="hist-del-btn" onclick="deleteHistory(${item.id})">✖</button>
                 `;
