@@ -1,1 +1,563 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Bike GPS & Battery Tracker</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00ffcc;
+            --accent-green: #2ea043;
+            --accent-red: #da3633;
+            --text-main: #c9d1d9;
+            --text-bright: #ffffff;
+            --border-color: #30363d;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 12px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .header-title {
+            text-align: center;
+            font-size: 1.3rem;
+            margin: 5px 0 12px 0;
+            color: var(--text-bright);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .stat-box {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 2px 0;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #8b949e;
+            text-transform: uppercase;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 4px;
+            color: #8b949e;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 9px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: #0d1117;
+            color: var(--text-bright);
+            box-sizing: border-box;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 11px;
+            border-radius: 6px;
+            border: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 6px;
+        }
+
+        .btn-primary { background-color: var(--accent-color); color: #000; }
+        .btn-success { background-color: var(--accent-green); color: #fff; }
+        .btn-danger { background-color: var(--accent-red); color: #fff; }
+        .btn-outline { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-main); }
+
+        button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-bright);
+        }
+
+        .collapsible-content {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .hidden { display: none; }
+
+        /* Progress Bar Baterai */
+        .battery-bar-container {
+            width: 100%;
+            height: 12px;
+            background-color: #21262d;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .battery-bar-fill {
+            height: 100%;
+            width: 50%;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .history-item {
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .history-info { font-size: 0.85rem; }
+        .history-date { color: #8b949e; font-size: 0.75rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-title">⚡ E-Bike GPS & Battery Tracker</div>
+
+    <!-- PENGATURAN BATERAI (Bisa Disembunyikan) -->
+    <div class="card">
+        <div class="collapsible-header" onclick="toggleSettings()">
+            <h3>⚙️ Pengaturan Baterai</h3>
+            <span id="toggleIcon" style="font-size: 0.9rem; color: #8b949e;">▼ Buka</span>
+        </div>
+        <div id="settingsContent" class="collapsible-content hidden">
+            <div class="grid-2">
+                <div>
+                    <label for="config">Sistem Baterai</label>
+                    <select id="config" onchange="saveAndCalculate()">
+                        <option value="16S" selected>16S (48V Nominal)</option>
+                        <option value="4S">4S (12V Nominal)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="capacityAh">Kapasitas (Ah)</label>
+                    <input type="number" id="capacityAh" value="20" onchange="saveAndCalculate()">
+                </div>
+            </div>
+            <div>
+                <label for="currentV" style="color: var(--accent-color); font-weight: bold;">🔋 Voltase Voltmeter Saat Ini (V)</label>
+                <input type="number" id="currentV" step="0.1" value="52.3" oninput="saveAndCalculate()">
+            </div>
+            <div style="font-size: 0.75rem; color: #8b949e; text-align: center;">
+                *Masukkan voltase dari voltmeter saat sepeda berhenti/posisi diam.
+            </div>
+        </div>
+    </div>
+
+    <!-- MONITOR UTAMA 1 LAYAR -->
+    <div class="card">
+        <div class="grid-2" style="margin-bottom: 10px;">
+            <div class="stat-box">
+                <div class="stat-label">Kecepatan</div>
+                <div class="stat-value" id="speed">0.0</div>
+                <div class="stat-label">km/jam</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Sisa Baterai</div>
+                <div class="stat-value" id="batPercent">50%</div>
+                <div class="battery-bar-container">
+                    <div id="batBar" class="battery-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid-2" style="margin-bottom: 12px;">
+            <div class="stat-box">
+                <div class="stat-label">Jarak Sesi Trip</div>
+                <div class="stat-value" id="tripDist" style="color: var(--text-bright);">0.00</div>
+                <div class="stat-label">km</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Kapasitas Tersisa</div>
+                <div class="stat-value" id="remainingAh" style="color: var(--text-bright);">10.0</div>
+                <div class="stat-label">Ah tersisa</div>
+            </div>
+        </div>
+
+        <button id="btnGPS" class="btn-primary" onclick="toggleGPS()">📡 Aktifkan GPS</button>
+        <button id="btnTrip" class="btn-success" onclick="toggleTrip()" disabled>▶ Mulai Trip</button>
+    </div>
+
+    <!-- RIWAYAT PERJALANAN -->
+    <div class="card">
+        <h3 style="margin-top: 0; font-size: 1rem; color: var(--text-bright);">📜 Riwayat Perjalanan</h3>
+        
+        <div class="grid-2" style="margin-bottom: 10px;">
+            <div class="stat-box">
+                <div class="stat-label">Total Jarak</div>
+                <div class="stat-value" id="totalAllDist" style="font-size: 1.2rem;">0.0 km</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Total Baterai Terpakai</div>
+                <div class="stat-value" id="totalAllAh" style="font-size: 1.2rem;">0.0 Ah</div>
+            </div>
+        </div>
+
+        <div id="historyContainer"></div>
+
+        <button class="btn-outline" style="margin-top: 10px; font-size: 0.8rem;" onclick="clearHistory()">🗑️ Hapus Semua Riwayat</button>
+    </div>
+</div>
+
+<script>
+    let watchId = null;
+    let isTracking = false;
+    let isTripActive = false;
+    
+    let lastLat = null;
+    let lastLon = null;
+    let tripDistance = 0; 
+    let tripStartTime = null;
+    let wakeLock = null;
+
+    let historyData = JSON.parse(localStorage.getItem('ebike_history_ah')) || [];
+
+    window.onload = function() {
+        // Restore Pengaturan
+        const savedConfig = localStorage.getItem('ebike_config');
+        const savedAh = localStorage.getItem('ebike_ah');
+        const savedV = localStorage.getItem('ebike_volts');
+        const isSettingsOpen = localStorage.getItem('ebike_settings_open') === 'true';
+
+        if (savedConfig) document.getElementById('config').value = savedConfig;
+        if (savedAh) document.getElementById('capacityAh').value = savedAh;
+        if (savedV) document.getElementById('currentV').value = savedV;
+
+        if (isSettingsOpen) {
+            document.getElementById('settingsContent').classList.remove('hidden');
+            document.getElementById('toggleIcon').innerText = '▲ Tutup';
+        } else {
+            document.getElementById('settingsContent').classList.add('hidden');
+            document.getElementById('toggleIcon').innerText = '▼ Buka';
+        }
+
+        // Restore Sesi Trip Aktif (Jika Halaman Ter-refresh)
+        const savedActiveTrip = JSON.parse(localStorage.getItem('ebike_active_trip'));
+        if (savedActiveTrip) {
+            isTripActive = true;
+            tripDistance = savedActiveTrip.tripDistance || 0;
+            tripStartTime = new Date(savedActiveTrip.tripStartTime);
+            lastLat = savedActiveTrip.lastLat;
+            lastLon = savedActiveTrip.lastLon;
+
+            document.getElementById('tripDist').innerText = tripDistance.toFixed(2);
+            const btnTrip = document.getElementById('btnTrip');
+            btnTrip.innerText = "⏹ Selesai & Simpan Trip";
+            btnTrip.className = "btn-danger";
+        }
+
+        saveAndCalculate();
+        renderHistory();
+    };
+
+    // --- SCREEN WAKE LOCK API ---
+    async function requestWakeLock() {
+        try {
+            if ('wakeLock' in navigator) {
+                wakeLock = await navigator.wakeLock.request('screen');
+            }
+        } catch (err) {
+            console.warn(`Wake Lock Error: ${err.message}`);
+        }
+    }
+
+    function releaseWakeLock() {
+        if (wakeLock !== null) {
+            wakeLock.release();
+            wakeLock = null;
+        }
+    }
+
+    function toggleSettings() {
+        const content = document.getElementById('settingsContent');
+        const icon = document.getElementById('toggleIcon');
+        const isHidden = content.classList.contains('hidden');
+
+        if (isHidden) {
+            content.classList.remove('hidden');
+            icon.innerText = '▲ Tutup';
+            localStorage.setItem('ebike_settings_open', 'true');
+        } else {
+            content.classList.add('hidden');
+            icon.innerText = '▼ Buka';
+            localStorage.setItem('ebike_settings_open', 'false');
+        }
+    }
+
+    // Konversi Voltase ke % LiFePO4
+    function getLiFePO4SOC(v, config) {
+        const series = config === '4S' ? 4 : 16;
+        const cellV = v / series;
+
+        const curve = [
+            { v: 3.40, pct: 100 },
+            { v: 3.33, pct: 90 },
+            { v: 3.30, pct: 80 },
+            { v: 3.28, pct: 70 },
+            { v: 3.25, pct: 50 },
+            { v: 3.23, pct: 40 },
+            { v: 3.20, pct: 30 },
+            { v: 3.15, pct: 20 },
+            { v: 3.00, pct: 10 },
+            { v: 2.50, pct: 0 }
+        ];
+
+        if (cellV >= curve[0].v) return 100;
+        if (cellV <= curve[curve.length - 1].v) return 0;
+
+        for (let i = 0; i < curve.length - 1; i++) {
+            if (cellV <= curve[i].v && cellV >= curve[i+1].v) {
+                const ratio = (cellV - curve[i+1].v) / (curve[i].v - curve[i+1].v);
+                return Math.round(curve[i+1].pct + ratio * (curve[i].pct - curve[i+1].pct));
+            }
+        }
+        return 0;
+    }
+
+    function saveAndCalculate() {
+        const config = document.getElementById('config').value;
+        const totalCapAh = parseFloat(document.getElementById('capacityAh').value) || 20;
+        const volts = parseFloat(document.getElementById('currentV').value) || 0;
+
+        localStorage.setItem('ebike_config', config);
+        localStorage.setItem('ebike_ah', totalCapAh);
+        localStorage.setItem('ebike_volts', volts);
+
+        let basePercent = getLiFePO4SOC(volts, config);
+
+        const usedAhGPS = tripDistance * 0.4;
+        const initialAh = totalCapAh * (basePercent / 100);
+        const currentAh = Math.max(0, initialAh - usedAhGPS);
+        const finalPercent = Math.max(0, Math.round((currentAh / totalCapAh) * 100));
+
+        document.getElementById('batPercent').innerText = finalPercent + "%";
+        document.getElementById('batBar').style.width = finalPercent + "%";
+        document.getElementById('remainingAh').innerText = currentAh.toFixed(1);
+    }
+
+    function toggleGPS() {
+        const btnGPS = document.getElementById('btnGPS');
+        const btnTrip = document.getElementById('btnTrip');
+
+        if (!isTracking) {
+            if ("geolocation" in navigator) {
+                watchId = navigator.geolocation.watchPosition(
+                    positionSuccess,
+                    positionError,
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 1000 }
+                );
+                isTracking = true;
+                requestWakeLock(); // Mencegah Layar Mati
+                btnGPS.innerText = "🛑 Matikan GPS";
+                btnGPS.className = "btn-danger";
+                btnTrip.disabled = false;
+            } else {
+                alert("GPS tidak didukung di browser ini.");
+            }
+        } else {
+            if (isTripActive && !confirm("Trip sedang berjalan. Yakin ingin mematikan GPS?")) {
+                return;
+            }
+            navigator.geolocation.clearWatch(watchId);
+            isTracking = false;
+            releaseWakeLock(); // Lepas Wake Lock
+            btnGPS.innerText = "📡 Aktifkan GPS";
+            btnGPS.className = "btn-primary";
+            document.getElementById('speed').innerText = "0.0";
+            if (isTripActive) toggleTrip();
+            btnTrip.disabled = true;
+        }
+    }
+
+    function positionSuccess(pos) {
+        const lat = pos.coords.latitude;
+        const lon = pos.coords.longitude;
+        const speedKmh = pos.coords.speed ? (pos.coords.speed * 3.6).toFixed(1) : "0.0";
+
+        document.getElementById('speed').innerText = speedKmh;
+
+        if (isTripActive) {
+            if (lastLat !== null && lastLon !== null) {
+                const delta = calculateDistance(lastLat, lastLon, lat, lon);
+                if (delta > 0.003) { // Filter pergerakan > 3m
+                    tripDistance += delta;
+                    document.getElementById('tripDist').innerText = tripDistance.toFixed(2);
+                    
+                    // Simpan status trip aktif ke localStorage agar tahan refresh
+                    localStorage.setItem('ebike_active_trip', JSON.stringify({
+                        tripDistance: tripDistance,
+                        tripStartTime: tripStartTime,
+                        lastLat: lat,
+                        lastLon: lon
+                    }));
+
+                    saveAndCalculate();
+                }
+            }
+            lastLat = lat;
+            lastLon = lon;
+        }
+    }
+
+    function positionError(err) { console.warn("GPS Error: " + err.message); }
+
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+        const R = 6371;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                  Math.sin(dLon/2) * Math.sin(dLon/2);
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    }
+
+    function toggleTrip() {
+        const btnTrip = document.getElementById('btnTrip');
+
+        if (!isTripActive) {
+            isTripActive = true;
+            tripDistance = 0;
+            lastLat = null;
+            lastLon = null;
+            tripStartTime = new Date();
+
+            document.getElementById('tripDist').innerText = "0.00";
+            btnTrip.innerText = "⏹ Selesai & Simpan Trip";
+            btnTrip.className = "btn-danger";
+
+            localStorage.setItem('ebike_active_trip', JSON.stringify({
+                tripDistance: 0,
+                tripStartTime: tripStartTime,
+                lastLat: null,
+                lastLon: null
+            }));
+        } else {
+            isTripActive = false;
+            const tripEndTime = new Date();
+            const durationMin = Math.max(1, Math.round((tripEndTime - tripStartTime) / 60000));
+            const usedAh = (tripDistance * 0.4).toFixed(2);
+
+            if (tripDistance > 0.01) {
+                const tripRecord = {
+                    id: Date.now(),
+                    date: tripStartTime.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+                    distance: tripDistance.toFixed(2),
+                    duration: durationMin,
+                    usedAh: usedAh
+                };
+
+                historyData.unshift(tripRecord);
+                localStorage.setItem('ebike_history_ah', JSON.stringify(historyData));
+                renderHistory();
+            }
+
+            localStorage.removeItem('ebike_active_trip');
+            btnTrip.innerText = "▶️️ Mulai Trip Baru";
+            btnTrip.className = "btn-success";
+        }
+    }
+
+    function renderHistory() {
+        const container = document.getElementById('historyContainer');
+        container.innerHTML = "";
+
+        let totalDist = 0;
+        let totalAh = 0;
+
+        if (historyData.length === 0) {
+            container.innerHTML = `<div style="text-align:center; color:#8b949e; font-size:0.8rem; padding:10px;">Belum ada riwayat perjalanan tersimpan.</div>`;
+        } else {
+            historyData.forEach(item => {
+                totalDist += parseFloat(item.distance);
+                totalAh += parseFloat(item.usedAh);
+
+                const div = document.createElement('div');
+                div.className = 'history-item';
+                div.innerHTML = `
+                    <div class="history-info">
+                        <strong>${item.distance} km</strong> (${item.duration}m)
+                        <div class="history-date">${item.date} • Penggunaan: <span style="color:var(--accent-color);">${item.usedAh} Ah</span></div>
+                    </div>
+                    <button style="width:auto; padding:3px 8px; font-size:0.75rem; margin:0;" class="btn-outline" onclick="deleteHistoryItem(${item.id})">❌</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        document.getElementById('totalAllDist').innerText = totalDist.toFixed(1) + " km";
+        document.getElementById('totalAllAh').innerText = totalAh.toFixed(1) + " Ah";
+    }
+
+    function deleteHistoryItem(id) {
+        historyData = historyData.filter(item => item.id !== id);
+        localStorage.setItem('ebike_history_ah', JSON.stringify(historyData));
+        renderHistory();
+    }
+
+    function clearHistory() {
+        if (confirm("Hapus semua riwayat perjalanan?")) {
+            historyData = [];
+            localStorage.removeItem('ebike_history_ah');
+            renderHistory();
+        }
+    }
+</script>
+
+</body>
+</html>
