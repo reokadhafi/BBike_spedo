@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>E-Bike Sport Digital Cockpit &amp; Battery Tracker</title>
-<!-- Google Fonts for Digital & Sporty Dashboard Look -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&amp;family=Orbitron:wght@500;700;900&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
-<style>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>E-Bike Sport Digital Cockpit &amp; Battery Tracker</title>
+    <!-- Google Fonts for Digital & Sporty Dashboard Look -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&amp;family=Orbitron:wght@500;700;900&amp;family=Rajdhani:wght@500;600;700&amp;display=swap"
+        rel="stylesheet" />
+    <style>
         /* TEMA DEFAULT: CYBER NEON */
         :root {
             --bg-dark: #07090e;
@@ -16,7 +19,7 @@
             --panel-bg: linear-gradient(180deg, #0d131e 0%, #06090e 100%);
             --panel-border: #1e293b;
             --panel-card-bg: #0d121b;
-            
+
             --cyan-neon: #00f0ff;
             --cyan-glow: rgba(0, 240, 255, 0.6);
             --green-neon: #00ff88;
@@ -24,11 +27,11 @@
             --red-neon: #ff0055;
             --red-glow: rgba(255, 0, 85, 0.6);
             --amber-neon: #ffaa00;
-            
+
             --speed-color: #00f0ff;
             --speed-glow: 0 0 20px rgba(0, 240, 255, 0.6), 0 0 40px rgba(0, 240, 255, 0.3);
             --tacho-inactive: #162232;
-            
+
             --text-muted: #5d6f85;
             --text-light: #9eb1c9;
             --text-bright: #ffffff;
@@ -44,7 +47,7 @@
             --panel-bg: linear-gradient(180deg, #8fa082 0%, #7d8e70 100%);
             --panel-border: #56634c;
             --panel-card-bg: #829275;
-            
+
             --cyan-neon: #111810;
             --cyan-glow: rgba(0, 0, 0, 0.15);
             --green-neon: #182216;
@@ -52,11 +55,11 @@
             --red-neon: #2a0808;
             --red-glow: rgba(0, 0, 0, 0.1);
             --amber-neon: #222010;
-            
+
             --speed-color: #0f150e;
             --speed-glow: 0 0 1px rgba(0, 0, 0, 0.4);
             --tacho-inactive: #6c7b60;
-            
+
             --text-muted: #434e3b;
             --text-light: #232c1e;
             --text-bright: #090e08;
@@ -72,7 +75,7 @@
             --panel-bg: linear-gradient(180deg, #1f1103 0%, #0a0601 100%);
             --panel-border: #3d2306;
             --panel-card-bg: #1a0f03;
-            
+
             --cyan-neon: #ffaa00;
             --cyan-glow: rgba(255, 170, 0, 0.6);
             --green-neon: #ffaa00;
@@ -80,11 +83,11 @@
             --red-neon: #ff3300;
             --red-glow: rgba(255, 51, 0, 0.6);
             --amber-neon: #ff8800;
-            
+
             --speed-color: #ffaa00;
             --speed-glow: 0 0 20px rgba(255, 170, 0, 0.6);
             --tacho-inactive: #2b1905;
-            
+
             --text-muted: #80561d;
             --text-light: #d19945;
             --text-bright: #fff2d6;
@@ -100,7 +103,7 @@
             --panel-bg: #0a0a0a;
             --panel-border: #222222;
             --panel-card-bg: #111111;
-            
+
             --cyan-neon: #ffffff;
             --cyan-glow: rgba(255, 255, 255, 0.4);
             --green-neon: #cccccc;
@@ -108,11 +111,11 @@
             --red-neon: #ffffff;
             --red-glow: rgba(255, 255, 255, 0.5);
             --amber-neon: #aaaaaa;
-            
+
             --speed-color: #ffffff;
             --speed-glow: 0 0 15px rgba(255, 255, 255, 0.5);
             --tacho-inactive: #222222;
-            
+
             --text-muted: #666666;
             --text-light: #aaaaaa;
             --text-bright: #ffffff;
@@ -128,7 +131,7 @@
             --panel-bg: linear-gradient(180deg, #1c0508 0%, #080102 100%);
             --panel-border: #420d14;
             --panel-card-bg: #170407;
-            
+
             --cyan-neon: #ff0055;
             --cyan-glow: rgba(255, 0, 85, 0.6);
             --green-neon: #ff2a00;
@@ -136,11 +139,11 @@
             --red-neon: #ff0033;
             --red-glow: rgba(255, 0, 51, 0.7);
             --amber-neon: #ff6600;
-            
+
             --speed-color: #ff0055;
             --speed-glow: 0 0 20px rgba(255, 0, 85, 0.6);
             --tacho-inactive: #2e080e;
-            
+
             --text-muted: #853342;
             --text-light: #d68190;
             --text-bright: #ffffff;
@@ -234,7 +237,7 @@
             border-radius: 20px;
             padding: 16px 16px 14px;
             position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
             overflow: hidden;
             transition: all 0.3s ease;
         }
@@ -264,6 +267,7 @@
             transition: all 0.2s;
             cursor: pointer;
         }
+
         .turn-signal.active {
             color: var(--green-neon);
             text-shadow: 0 0 12px var(--green-glow);
@@ -271,7 +275,9 @@
         }
 
         @keyframes blinker {
-            50% { opacity: 0.2; }
+            50% {
+                opacity: 0.2;
+            }
         }
 
         .indicator-icons-row {
@@ -291,6 +297,7 @@
             border: 1px solid var(--panel-border);
             transition: all 0.3s;
             cursor: pointer;
+            touch-action: manipulation;
         }
 
         .icon-pill.active-green {
@@ -316,8 +323,13 @@
         }
 
         @keyframes pulse-danger {
-            from { opacity: 0.6; }
-            to { opacity: 1; }
+            from {
+                opacity: 0.6;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .tachometer-wrap {
@@ -373,28 +385,43 @@
             transition: color 0.25s ease;
         }
 
+        /* GRID LAYOUT PERSIS DI TENGAH AGAR KM DAN REM TIDAK SALING TERDORONG */
         .trip-center-box {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            margin-top: 15px;
-            gap: 6px;
+            width: 220px;
+            margin-top: 12px;
             background: var(--trip-box-bg);
-            padding: 2px 10px;
-            border-radius: 6px;
+            padding: 4px 6px;
+            border-radius: 8px;
             border: 1px solid var(--panel-border);
             pointer-events: auto;
-            transition: all 0.3s ease;
+            box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
         }
 
-        .trip-sub-item {
+        .trip-sub-item-left {
             display: flex;
             align-items: baseline;
-            gap: 2px;
+            justify-content: flex-end;
+            gap: 3px;
+            padding-right: 6px;
+            white-space: nowrap;
+        }
+
+        .trip-sub-item-right {
+            display: flex;
+            align-items: baseline;
+            justify-content: flex-start;
+            gap: 3px;
+            padding-left: 6px;
+            white-space: nowrap;
         }
 
         .trip-center-val {
             font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
+            font-variant-numeric: tabular-nums;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--green-neon);
             text-shadow: 0 0 6px var(--green-glow);
@@ -403,19 +430,22 @@
 
         .trip-center-unit {
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.58rem;
+            font-size: 0.6rem;
             font-weight: 700;
             color: var(--text-muted);
         }
 
         .trip-divider {
-            color: var(--text-muted);
-            font-size: 0.7rem;
+            color: var(--panel-border);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0 2px;
         }
 
         .range-center-val {
             font-family: 'Orbitron', monospace;
-            font-size: 1.3rem;
+            font-variant-numeric: tabular-nums;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--red-neon);
             text-shadow: 0 0 6px var(--red-glow);
@@ -476,6 +506,7 @@
             overflow: hidden;
             position: relative;
         }
+
         .volts-progress-fill {
             height: 100%;
             background: var(--cyan-neon);
@@ -514,7 +545,7 @@
 
         .action-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 10px;
         }
 
@@ -522,38 +553,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 8px;
-            border-radius: 10px;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 12px;
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 700;
             letter-spacing: 0.5px;
-            border: 1px solid var(--panel-border);
+            border: 1px solid var(--green-neon);
+            background: var(--panel-card-bg);
+            color: var(--green-neon);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
             cursor: pointer;
             transition: all 0.2s;
         }
 
-        .btn-gps {
-            background: var(--panel-card-bg);
-            color: var(--green-neon);
-            border-color: var(--green-neon);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        }
-        .btn-gps.active {
-            background: var(--red-neon);
-            color: var(--bg-dark);
-            border-color: var(--red-neon);
-            animation: pulse-border 1.5s infinite;
-        }
-
-        .btn-trip {
-            background: var(--panel-card-bg);
-            color: var(--green-neon);
-            border-color: var(--green-neon);
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-        }
-        .btn-trip.recording {
+        .action-btn.active {
             background: var(--red-neon);
             color: var(--bg-dark);
             border-color: var(--red-neon);
@@ -573,6 +588,7 @@
             transition: all 0.2s;
             white-space: nowrap;
         }
+
         .btn-set-battery:hover {
             box-shadow: 0 0 10px var(--cyan-glow);
             transform: scale(1.02);
@@ -583,14 +599,15 @@
             color: var(--red-neon);
             border: 1px solid var(--red-neon);
             border-radius: 6px;
-            padding: 0 10px;
+            padding: 0 14px;
             font-family: 'Chakra Petch', sans-serif;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
             white-space: nowrap;
         }
+
         .btn-reset-odo:hover {
             background: var(--red-neon);
             color: var(--bg-dark);
@@ -598,9 +615,17 @@
         }
 
         @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 var(--red-glow); }
-            70% { box-shadow: 0 0 0 10px rgba(0,0,0,0); }
-            100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+            0% {
+                box-shadow: 0 0 0 0 var(--red-glow);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
         }
 
         .panel-card {
@@ -641,7 +666,8 @@
             display: block;
         }
 
-        input, select {
+        input,
+        select {
             width: 100%;
             padding: 9px 10px;
             background: var(--bg-dark);
@@ -652,7 +678,9 @@
             font-size: 0.85rem;
             transition: all 0.3s ease;
         }
-        input:focus, select:focus {
+
+        input:focus,
+        select:focus {
             outline: none;
             border-color: var(--cyan-neon);
         }
@@ -667,7 +695,7 @@
         }
 
         .history-card {
-            background: rgba(0,0,0,0.1);
+            background: rgba(0, 0, 0, 0.1);
             border: 1px solid var(--panel-border);
             border-radius: 6px;
             padding: 8px 10px;
@@ -693,835 +721,840 @@
             font-weight: 700;
         }
 
-        .hidden { display: none !important; }
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
+
 <body>
-<div class="dashboard-wrapper">
-<div class="top-bar">
-<div class="brand-title">
-<span class="brand-badge">PRO</span>
-<span>E-BIKE COCKPIT</span>
-</div>
-<div class="clock-display">
-<span id="liveClockTime">12:00:00</span>
-<span class="clock-ampm" id="liveClockAmPm">PM</span>
-</div>
-</div>
-<div class="cluster-panel">
-<div class="cluster-top-indicators">
-<span class="turn-signal" id="leftSignal" onclick="toggleTurn('left')">◀</span>
-<div class="indicator-icons-row">
-<span class="icon-pill active-green" id="pillReady">READY</span>
-<span class="icon-pill" id="pillTestMode" onclick="toggleTestMode()">TEST MODE</span>
-<span class="icon-pill" id="pillWarn">BAT-LOW</span>
-</div>
-<span class="turn-signal" id="rightSignal" onclick="toggleTurn('right')">▶</span>
-</div>
-<div class="tachometer-wrap">
-<svg class="tacho-svg" id="tachoSvg" viewbox="0 0 360 145">
-<g id="segmentedArcGroup"></g>
-<g id="scaleLabelsGroup"></g>
-</svg>
-<div class="speed-gear-center">
-<div class="digital-speed" id="speedVal">0</div>
-<div class="speed-unit" id="speedUnitText">KM/H</div>
-<div class="trip-center-box">
-<div class="trip-sub-item" title="Jarak Trip Saat Ini">
-<span class="trip-center-val" id="centerTripVal">0.75</span>
-<span class="trip-center-unit">KM</span>
-</div>
-<span class="trip-divider">|</span>
-<div class="trip-sub-item" title="Estimasi Sisa Jarak Baterai">
-<span class="trip-center-unit" style="color:var(--text-muted);">REM:</span>
-<span class="range-center-val" id="centerRangeVal">42.5</span>
-<span class="trip-center-unit">KM</span>
-</div>
-</div>
-</div>
-</div>
-<div class="bottom-telemetry-grid">
-<div class="telemetry-cell">
-<div class="cell-head">
-<span>VOLTMETER</span>
-<span id="voltStatusBadge" style="color:var(--cyan-neon); font-size:0.65rem;">NOMINAL</span>
-</div>
-<div class="cell-num" id="voltMainVal">53.10<span>V</span></div>
-<div class="volts-progress-bar">
-<div class="volts-progress-fill" id="voltFillBar" style="width: 78%;"></div>
-</div>
-<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:var(--text-muted);">
-<span><strong id="odoVal" style="color:var(--text-bright);">0.00</strong> km</span>
-<span id="tripTimerBadge" style="color:var(--text-light); font-family:'Orbitron';">00:00</span>
-</div>
-</div>
-<div class="telemetry-cell">
-<div class="cell-head">
-<span>STATUS BATERAI</span>
-<span id="batPercentBadge" style="color:var(--green-neon); font-weight:800;">85%</span>
-</div>
-<div class="cell-num" id="batAhVal">17.00<span>Ah</span></div>
-<div class="battery-segment-bar" id="batteryBar">
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg filled-green"></div>
-<div class="seg"></div>
-<div class="seg"></div>
-</div>
-<div style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:var(--text-muted);">
-<span id="sysProfileBadge">LiFePO4 16S</span>
-<span id="capTotalLabel">20.00 Ah</span>
-</div>
-</div>
-</div>
-</div>
-<div class="action-grid">
-<button class="action-btn btn-gps" id="btnGPS" onclick="toggleGPS()">
-<span>📡</span>
-<span id="txtGPS">Aktifkan GPS</span>
-</button>
-<button class="action-btn btn-trip" id="btnTrip" onclick="toggleTrip()">
-<span>▶</span>
-<span id="txtTrip">Mulai Trip</span>
-</button>
-</div>
-<div class="panel-card">
-<div class="card-header-toggle" onclick="toggleCollapse('settingsBody', 'settingsArrow')">
-<div class="card-title">
-<span>⚙️</span>
-<span>Kalibrasi, Tema &amp; Konfigurasi</span>
-</div>
-<span id="settingsArrow" style="color:var(--text-muted); font-size:0.8rem;">▼ Buka</span>
-</div>
-<div class="hidden" id="settingsBody" style="margin-top:10px; border-top:1px solid var(--panel-border); padding-top:10px;">
-
-<div style="margin-bottom: 12px; background: rgba(0,0,0,0.15); padding: 10px; border-radius: 8px; border: 1px solid var(--panel-border);">
-<label style="font-weight:700; color:var(--cyan-neon); margin-bottom: 6px;">🎨 Pilih Tema Warna Display:</label>
-<select class="theme-select-box" id="themeSelector" onchange="applyTheme(this.value)">
-<option value="calculator">📟 Kalkulator (LCD Monochrome Gray-Green)</option>
-<option selected="" value="default">🌐 Cyber Neon (Default Blue/Green)</option>
-<option value="amber">📻 Amber Classic (Retro Orange)</option>
-<option value="monochrome">🔲 OLED Monochrome (Black &amp; White)</option>
-<option value="racing-red">🏎️ Racing Red (Sporty Red)</option>
-</select>
-</div>
-
-<div class="form-row">
-<div>
-<label>Jenis Kimia Baterai</label>
-<select id="configChemistry">
-<option selected="" value="LiFePO4">LiFePO4 (LFP 3.2V/cell)</option>
-<option value="SLA">SLA / Aki Basah-Kering (12V/block)</option>
-<option value="Li-Ion">Lithium-ion / NMC (3.7V/cell)</option>
-</select>
-</div>
-<div>
-<label>Jumlah Seri (S)</label>
-<select id="configSys">
-<option selected="" value="16S">16S (48V / 51.2V Nominal)</option>
-<option value="20S">20S (60V / 64V Nominal)</option>
-<option value="12S">12S (36V Nominal)</option>
-<option value="4S">4S (12V Nominal)</option>
-</select>
-</div>
-</div>
-<div class="form-row">
-<div>
-<label>Kapasitas Baterai Custom (Ah)</label>
-<input id="inputCapacity" min="1" step="0.01" type="number" value="20.00"/>
-</div>
-<div>
-<label style="color:var(--cyan-neon);">Voltase Saat Ini (Voltmeter)</label>
-<input id="inputVolts" step="0.01" type="number" value="53.10"/>
-</div>
-</div>
-<div class="form-row">
-<div>
-<label>Estimasi Jarak Tempuh Full (km)</label>
-<input id="inputMaxRange" min="1" step="1" type="number" value="50"/>
-</div>
-<div>
-<label>Batas Speed Gauge (km/h)</label>
-<input id="inputMaxSpeed" max="150" min="20" onchange="updateMaxSpeedLimit(this.value)" type="number" value="50"/>
-</div>
-</div>
-<div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
-<span style="font-size:0.75rem; color:var(--text-muted); max-width:65%;">
-*Klik tombol <strong>Set Baterai</strong> untuk kalibrasi ulang voltase riil, estimasi sisa jarak, &amp; persen SoC.
-</span>
-<button class="btn-set-battery" onclick="recalculateBattery()">⚙️ Set Baterai</button>
-</div>
-<div class="form-row" style="margin-top:10px;">
-<div style="grid-column: span 2;">
-<label>Adjust / Reset Jarak Total (km)</label>
-<div style="display:flex; gap:6px;">
-<input id="inputOdoVal" onchange="manualSetOdo(this.value)" step="0.01" type="number" value="0.00"/>
-<button class="btn-reset-odo" onclick="resetOdoToZero()">Reset ODO</button>
-</div>
-</div>
-</div>
-<div style="margin-top:10px;">
-<button class="btn-reset-odo" onclick="resetTripAndTimer()" style="width:100%; padding:8px;">⏱️ Reset Trip &amp; Menit Timer</button>
-</div>
-</div>
-</div>
-<div class="panel-card">
-<div class="card-header-toggle" onclick="toggleCollapse('historyBody', 'histArrow')">
-<div class="card-title">
-<span>📜</span>
-<span>Log Riwayat Perjalanan</span>
-</div>
-<span id="histArrow" style="color:var(--text-muted); font-size:0.8rem;">▼ Buka</span>
-</div>
-<div class="hidden" id="historyBody" style="margin-top:10px; border-top:1px solid var(--panel-border); padding-top:10px;">
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
-<div style="background:var(--bg-dark); padding:8px; border-radius:6px; border:1px solid var(--panel-border); text-align:center;">
-<div style="font-size:0.7rem; color:var(--text-muted);">TOTAL JARAK TERCATAT</div>
-<div id="histTotalKm" style="font-family:'Orbitron'; font-size:1.1rem; color:var(--cyan-neon);">0.00 km</div>
-</div>
-<div style="background:var(--bg-dark); padding:8px; border-radius:6px; border:1px solid var(--panel-border); text-align:center;">
-<div style="font-size:0.7rem; color:var(--text-muted);">TOTAL ENERGI TERPAKAI</div>
-<div id="histTotalAh" style="font-family:'Orbitron'; font-size:1.1rem; color:var(--green-neon);">0.00 Ah</div>
-</div>
-</div>
-<div class="history-list" id="historyItemsContainer"></div>
-<button onclick="clearAllHistory()" style="margin-top:10px; width:100%; background:transparent; border:1px solid var(--panel-border); color:var(--text-light); padding:8px; border-radius:6px; font-size:0.75rem; cursor:pointer;">
-                🗑️ Bersihkan Semua Catatan
+    <div class="dashboard-wrapper">
+        <div class="top-bar">
+            <div class="brand-title">
+                <span class="brand-badge">PRO</span>
+                <span>E-BIKE COCKPIT</span>
+            </div>
+            <div class="clock-display">
+                <span id="liveClockTime">12:00:00</span>
+                <span class="clock-ampm" id="liveClockAmPm">PM</span>
+            </div>
+        </div>
+        <div class="cluster-panel">
+            <div class="cluster-top-indicators">
+                <span class="turn-signal" id="leftSignal" onclick="toggleTurn('left')">◀</span>
+                <div class="indicator-icons-row">
+                    <span class="icon-pill active-green" id="pillReady">READY</span>
+                    <span class="icon-pill" id="pillTestMode" onmousedown="startGasThrottle(event)"
+                        onmouseup="stopGasThrottle(event)" onmouseleave="stopGasThrottle(event)"
+                        ontouchstart="startGasThrottle(event)" ontouchend="stopGasThrottle(event)"
+                        ontouchcancel="stopGasThrottle(event)" title="Tahan untuk simulasi Gas Throttle">TEST
+                        MODE</span>
+                    <span class="icon-pill" id="pillWarn">BAT-LOW</span>
+                </div>
+                <span class="turn-signal" id="rightSignal" onclick="toggleTurn('right')">▶</span>
+            </div>
+            <div class="tachometer-wrap">
+                <svg class="tacho-svg" id="tachoSvg" viewbox="0 0 360 145">
+                    <g id="segmentedArcGroup"></g>
+                    <g id="scaleLabelsGroup"></g>
+                </svg>
+                <div class="speed-gear-center">
+                    <div class="digital-speed" id="speedVal">0</div>
+                    <div class="speed-unit" id="speedUnitText">KM/H</div>
+                    <div class="trip-center-box">
+                        <div class="trip-sub-item-left" title="Jarak Trip Saat Ini">
+                            <span class="trip-center-val" id="centerTripVal">0.00</span>
+                            <span class="trip-center-unit">KM</span>
+                        </div>
+                        <span class="trip-divider">|</span>
+                        <div class="trip-sub-item-right" title="Estimasi Sisa Jarak Baterai">
+                            <span class="trip-center-unit" style="color:var(--text-muted);">REM:</span>
+                            <span class="range-center-val" id="centerRangeVal">42.5</span>
+                            <span class="trip-center-unit">KM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-telemetry-grid">
+                <div class="telemetry-cell">
+                    <div class="cell-head">
+                        <span>VOLTMETER</span>
+                        <span id="voltStatusBadge" style="color:var(--cyan-neon); font-size:0.65rem;">NOMINAL</span>
+                    </div>
+                    <div class="cell-num" id="voltMainVal">53.10<span>V</span></div>
+                    <div class="volts-progress-bar">
+                        <div class="volts-progress-fill" id="voltFillBar" style="width: 78%;"></div>
+                    </div>
+                    <div
+                        style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:var(--text-muted);">
+                        <span><strong id="odoVal" style="color:var(--text-bright);">0.00</strong> km</span>
+                        <span id="tripTimerBadge" style="color:var(--text-light); font-family:'Orbitron';">00:00</span>
+                    </div>
+                </div>
+                <div class="telemetry-cell">
+                    <div class="cell-head">
+                        <span>STATUS BATERAI</span>
+                        <span id="batPercentBadge" style="color:var(--green-neon); font-weight:800;">85%</span>
+                    </div>
+                    <div class="cell-num" id="batAhVal">17.00<span>Ah</span></div>
+                    <div class="battery-segment-bar" id="batteryBar">
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg filled-green"></div>
+                        <div class="seg"></div>
+                        <div class="seg"></div>
+                    </div>
+                    <div
+                        style="display:flex; justify-content:space-between; margin-top:5px; font-size:0.75rem; color:var(--text-muted);">
+                        <span id="sysProfileBadge">LiFePO4 16S</span>
+                        <span id="capTotalLabel">20.00 Ah</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="action-grid">
+            <button class="action-btn" id="btnGpsTrip" onclick="toggleGpsTrip()">
+                <span id="iconGpsTrip">📡</span>
+                <span id="txtGpsTrip">Mulai</span>
             </button>
-</div>
-</div>
-</div>
-<script>
-    let currentSpeed = 0;
-    let targetSpeed = 0;
-    let maxSpeedLimit = 50;
-    let maxRangeKm = 50;
-    const TOTAL_SEGMENTS = 28;
-    
-    let isGPSActive = false;
-    let isTripRunning = false;
-    let isTestModeActive = false;
-    let testModeInterval = null;
+        </div>
+        <div class="panel-card">
+            <div class="card-header-toggle" onclick="toggleCollapse('settingsBody', 'settingsArrow')">
+                <div class="card-title">
+                    <span>⚙️</span>
+                    <span>Kalibrasi, Tema &amp; Konfigurasi</span>
+                </div>
+                <span id="settingsArrow" style="color:var(--text-muted); font-size:0.8rem;">▼ Buka</span>
+            </div>
+            <div class="hidden" id="settingsBody"
+                style="margin-top:10px; border-top:1px solid var(--panel-border); padding-top:10px;">
 
-    let gpsWatchId = null;
-    let lastPosition = null;
-    let currentTripDistance = 0.75;
-    let tripStartTime = null;
-    let tripIntervalTimer = null;
-    let wakeLock = null;
+                <div
+                    style="margin-bottom: 12px; background: rgba(0,0,0,0.15); padding: 10px; border-radius: 8px; border: 1px solid var(--panel-border);">
+                    <label style="font-weight:700; color:var(--cyan-neon); margin-bottom: 6px;">🎨 Pilih Tema Warna
+                        Display:</label>
+                    <select class="theme-select-box" id="themeSelector" onchange="applyTheme(this.value)">
+                        <option value="calculator">📟 Kalkulator (LCD Monochrome Gray-Green)</option>
+                        <option selected="" value="default">🌐 Cyber Neon (Default Blue/Green)</option>
+                        <option value="amber">📻 Amber Classic (Retro Orange)</option>
+                        <option value="monochrome">🔲 OLED Monochrome (Black &amp; White)</option>
+                        <option value="racing-red">🏎️ Racing Red (Sporty Red)</option>
+                    </select>
+                </div>
 
-    let batteryPercent = 85;
-    let currentRemainingAh = 17.0;
-    let currentVoltage = 53.1;
-    let odoDistance = parseFloat(localStorage.getItem('ebike_odo')) || 0.00;
+                <div class="form-row">
+                    <div>
+                        <label>Jenis Kimia Baterai</label>
+                        <select id="configChemistry">
+                            <option selected="" value="LiFePO4">LiFePO4 (LFP 3.2V/cell)</option>
+                            <option value="SLA">SLA / Aki Basah-Kering (12V/block)</option>
+                            <option value="Li-Ion">Lithium-ion / NMC (3.7V/cell)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Jumlah Seri (S)</label>
+                        <select id="configSys">
+                            <option selected="" value="16S">16S (48V / 51.2V Nominal)</option>
+                            <option value="20S">20S (60V / 64V Nominal)</option>
+                            <option value="12S">12S (36V Nominal)</option>
+                            <option value="4S">4S (12V Nominal)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label>Kapasitas Baterai Custom (Ah)</label>
+                        <input id="inputCapacity" min="1" step="0.01" type="number" value="20.00" />
+                    </div>
+                    <div>
+                        <label style="color:var(--cyan-neon);">Voltase Saat Ini (Voltmeter)</label>
+                        <input id="inputVolts" step="0.01" type="number" value="53.10" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label>Estimasi Jarak Tempuh Full (km)</label>
+                        <input id="inputMaxRange" min="1" step="1" type="number" value="50" />
+                    </div>
+                    <div>
+                        <label>Batas Speed Gauge (km/h)</label>
+                        <input id="inputMaxSpeed" max="150" min="20" onchange="updateMaxSpeedLimit(this.value)"
+                            type="number" value="50" />
+                    </div>
+                </div>
+                <div style="margin-top:12px; display:flex; justify-content:space-between; align-items:center;">
+                    <span style="font-size:0.75rem; color:var(--text-muted); max-width:65%;">
+                        *Klik tombol <strong>Set Baterai</strong> untuk kalibrasi ulang voltase riil, estimasi sisa
+                        jarak, &amp; persen SoC.
+                    </span>
+                    <button class="btn-set-battery" onclick="recalculateBattery(true)">⚙️ Set Baterai</button>
+                </div>
+                <div class="form-row" style="margin-top:10px;">
+                    <div style="grid-column: span 2;">
+                        <label>Adjust / Reset Data Perjalanan (ODO, Trip, Timer)</label>
+                        <div style="display:flex; gap:6px;">
+                            <input id="inputOdoVal" onchange="manualSetOdo(this.value)" step="0.01" type="number"
+                                value="0.00" />
+                            <button class="btn-reset-odo" onclick="resetAllData()">🔄 Reset ODO, Trip &amp;
+                                Timer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-card">
+            <div class="card-header-toggle" onclick="toggleCollapse('historyBody', 'histArrow')">
+                <div class="card-title">
+                    <span>📜</span>
+                    <span>Log Riwayat Perjalanan</span>
+                </div>
+                <span id="histArrow" style="color:var(--text-muted); font-size:0.8rem;">▼ Buka</span>
+            </div>
+            <div class="hidden" id="historyBody"
+                style="margin-top:10px; border-top:1px solid var(--panel-border); padding-top:10px;">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
+                    <div
+                        style="background:var(--bg-dark); padding:8px; border-radius:6px; border:1px solid var(--panel-border); text-align:center;">
+                        <div style="font-size:0.7rem; color:var(--text-muted);">TOTAL JARAK TERCATAT</div>
+                        <div id="histTotalKm" style="font-family:'Orbitron'; font-size:1.1rem; color:var(--cyan-neon);">
+                            0.00 km</div>
+                    </div>
+                    <div
+                        style="background:var(--bg-dark); padding:8px; border-radius:6px; border:1px solid var(--panel-border); text-align:center;">
+                        <div style="font-size:0.7rem; color:var(--text-muted);">TOTAL ENERGI TERPAKAI</div>
+                        <div id="histTotalAh"
+                            style="font-family:'Orbitron'; font-size:1.1rem; color:var(--green-neon);">0.00 Ah</div>
+                    </div>
+                </div>
+                <div class="history-list" id="historyItemsContainer"></div>
+                <button onclick="clearAllHistory()"
+                    style="margin-top:10px; width:100%; background:transparent; border:1px solid var(--panel-border); color:var(--text-light); padding:8px; border-radius:6px; font-size:0.75rem; cursor:pointer;">
+                    🗑️ Bersihkan Semua Catatan
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        let currentSpeed = 0;
+        let targetSpeed = 0;
+        let maxSpeedLimit = 50;
+        let maxRangeKm = 50;
+        const TOTAL_SEGMENTS = 28;
 
-    let historyRecords = JSON.parse(localStorage.getItem('ebike_trip_records')) || [];
+        let isGpsTripActive = false;
+        let isTripRunning = false;
+        let isGPSActive = false;
+        let gpsWatchId = null;
+        let lastPosition = null;
+        let wakeLock = null;
 
-    window.addEventListener('DOMContentLoaded', () => {
-        setInterval(updateClock, 1000);
-        updateClock();
+        let currentTripDistance = parseFloat(localStorage.getItem('ebike_trip_dist')) || 0.00;
+        let tripSeconds = parseInt(localStorage.getItem('ebike_trip_seconds')) || 0;
+        let tripTimerInterval = null;
 
-        const savedTheme = localStorage.getItem('ebike_theme') || 'default';
-        applyTheme(savedTheme);
+        let batteryPercent = 85;
+        let totalCapacityAh = parseFloat(localStorage.getItem('ebike_user_ah')) || 20.0;
+        let currentRemainingAh = parseFloat(localStorage.getItem('ebike_current_ah')) || (totalCapacityAh * 0.85);
+        let currentVoltage = parseFloat(localStorage.getItem('ebike_user_volts')) || 53.1;
+        let odoDistance = parseFloat(localStorage.getItem('ebike_odo')) || 0.00;
 
-        const savedLimit = localStorage.getItem('ebike_max_speed');
-        if (savedLimit) maxSpeedLimit = parseFloat(savedLimit) || 50;
-        document.getElementById('inputMaxSpeed').value = maxSpeedLimit;
+        let historyRecords = JSON.parse(localStorage.getItem('ebike_trip_records')) || [];
 
-        const savedRange = localStorage.getItem('ebike_max_range');
-        if (savedRange) maxRangeKm = parseFloat(savedRange) || 50;
-        document.getElementById('inputMaxRange').value = maxRangeKm;
+        let isGasHeld = false;
+        let gasThrottleInterval = null;
 
-        const savedVolts = localStorage.getItem('ebike_user_volts');
-        const savedAh = localStorage.getItem('ebike_user_ah');
-        const savedConfig = localStorage.getItem('ebike_sys_config');
-        const savedChem = localStorage.getItem('ebike_sys_chem');
+        window.addEventListener('DOMContentLoaded', () => {
+            setInterval(updateClock, 1000);
+            updateClock();
 
-        if (savedVolts) document.getElementById('inputVolts').value = parseFloat(savedVolts).toFixed(2);
-        if (savedAh) document.getElementById('inputCapacity').value = parseFloat(savedAh).toFixed(2);
-        if (savedConfig) document.getElementById('configSys').value = savedConfig;
-        if (savedChem) document.getElementById('configChemistry').value = savedChem;
+            const savedTheme = localStorage.getItem('ebike_theme') || 'default';
+            applyTheme(savedTheme);
 
-        document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('inputOdoVal').value = odoDistance.toFixed(2);
+            const savedLimit = localStorage.getItem('ebike_max_speed');
+            if (savedLimit) maxSpeedLimit = parseFloat(savedLimit) || 50;
+            document.getElementById('inputMaxSpeed').value = maxSpeedLimit;
 
-        buildSegmentedArc();
-        recalculateBattery();
-        renderHistory();
+            const savedRange = localStorage.getItem('ebike_max_range');
+            if (savedRange) maxRangeKm = parseFloat(savedRange) || 50;
+            document.getElementById('inputMaxRange').value = maxRangeKm;
 
-        requestAnimationFrame(speedAnimationLoop);
-    });
+            const savedVolts = localStorage.getItem('ebike_user_volts');
+            const savedAh = localStorage.getItem('ebike_user_ah');
+            const savedConfig = localStorage.getItem('ebike_sys_config');
+            const savedChem = localStorage.getItem('ebike_sys_chem');
 
-    function applyTheme(themeName) {
-        if (themeName === 'default') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', themeName);
-        }
-        localStorage.setItem('ebike_theme', themeName);
-        document.getElementById('themeSelector').value = themeName;
-        buildSegmentedArc();
-    }
+            if (savedVolts) document.getElementById('inputVolts').value = parseFloat(savedVolts).toFixed(2);
+            if (savedAh) document.getElementById('inputCapacity').value = parseFloat(savedAh).toFixed(2);
+            if (savedConfig) document.getElementById('configSys').value = savedConfig;
+            if (savedChem) document.getElementById('configChemistry').value = savedChem;
 
-    function updateClock() {
-        const now = new Date();
-        let hours = now.getHours();
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        const ampm = hours >= 12 ? 'PM' : 'AM';
-        
-        hours = hours % 12;
-        hours = hours ? hours : 12;
-        const strHours = String(hours).padStart(2, '0');
-
-        document.getElementById('liveClockTime').innerText = `${strHours}:${minutes}:${seconds}`;
-        document.getElementById('liveClockAmPm').innerText = ampm;
-    }
-
-    function buildSegmentedArc() {
-        const segGroup = document.getElementById('segmentedArcGroup');
-        const scaleGroup = document.getElementById('scaleLabelsGroup');
-        segGroup.innerHTML = '';
-        scaleGroup.innerHTML = '';
-
-        const cx = 180;
-        const cy = 132;
-        const rInner = 125;
-        const rOuter = 142;
-        
-        const startAngle = 195;
-        const totalSpan = 210;
-        const segStep = totalSpan / TOTAL_SEGMENTS;
-        const segWidthDeg = segStep * 0.72;
-
-        const computedStyle = getComputedStyle(document.documentElement);
-        const inactiveColor = computedStyle.getPropertyValue('--tacho-inactive').trim() || '#162232';
-        const textColor = computedStyle.getPropertyValue('--text-muted').trim() || '#475569';
-        const maxTextColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
-
-        for (let i = 0; i < TOTAL_SEGMENTS; i++) {
-            const a1 = startAngle - (i * segStep);
-            const a2 = a1 - segWidthDeg;
-
-            const pathD = describeArcBlock(cx, cy, rInner, rOuter, a1, a2);
-            const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-            path.setAttribute('d', pathD);
-            path.setAttribute('class', 'speed-block');
-            path.setAttribute('id', `spd-seg-${i}`);
-            path.setAttribute('fill', inactiveColor);
-            path.setAttribute('opacity', '0.4');
-            segGroup.appendChild(path);
-        }
-
-        const ticksCount = 5;
-        for (let t = 0; t <= ticksCount; t++) {
-            const fraction = t / ticksCount;
-            const val = Math.round(fraction * maxSpeedLimit);
-            const angleDeg = startAngle - (fraction * totalSpan);
-            const rad = angleDeg * (Math.PI / 180);
-            const rText = 108;
-            const tx = cx + rText * Math.cos(rad);
-            const ty = cy - rText * Math.sin(rad) + 4;
-
-            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            text.setAttribute('x', tx);
-            text.setAttribute('y', ty);
-            text.setAttribute('text-anchor', 'middle');
-            text.setAttribute('fill', t === ticksCount ? maxTextColor : textColor);
-            text.setAttribute('font-size', '9');
-            text.setAttribute('font-weight', '700');
-            text.setAttribute('font-family', "'Chakra Petch', sans-serif");
-            text.textContent = val;
-            scaleGroup.appendChild(text);
-        }
-    }
-
-    function describeArcBlock(cx, cy, r1, r2, degStart, degEnd) {
-        const rad1 = degStart * (Math.PI / 180);
-        const rad2 = degEnd * (Math.PI / 180);
-
-        const x1 = cx + r1 * Math.cos(rad1);
-        const y1 = cy - r1 * Math.sin(rad1);
-        const x2 = cx + r2 * Math.cos(rad1);
-        const y2 = cy - r2 * Math.sin(rad1);
-        const x3 = cx + r2 * Math.cos(rad2);
-        const y3 = cy - r2 * Math.sin(rad2);
-        const x4 = cx + r1 * Math.cos(rad2);
-        const y4 = cy - r1 * Math.sin(rad2);
-
-        return `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 0 0 ${x1} ${y1} Z`;
-    }
-
-    function updateMaxSpeedLimit(limit) {
-        limit = Math.max(20, Math.min(150, parseFloat(limit) || 50));
-        maxSpeedLimit = limit;
-        localStorage.setItem('ebike_max_speed', limit);
-
-        document.getElementById('inputMaxSpeed').value = limit;
-        buildSegmentedArc();
-    }
-
-    function manualSetOdo(val) {
-        val = parseFloat(val) || 0;
-        odoDistance = val;
-        localStorage.setItem('ebike_odo', odoDistance);
-        document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        document.getElementById('inputOdoVal').value = odoDistance.toFixed(2);
-    }
-
-    function resetOdoToZero() {
-        odoDistance = 0;
-        localStorage.setItem('ebike_odo', 0);
-        document.getElementById('odoVal').innerText = "0.00";
-        document.getElementById('inputOdoVal').value = "0.00";
-    }
-
-    function resetTripAndTimer() {
-        currentTripDistance = 0;
-        document.getElementById('centerTripVal').innerText = "0.00";
-        document.getElementById('tripTimerBadge').innerText = "00:00";
-        if (isTripRunning) {
-            tripStartTime = new Date();
-        }
-    }
-
-    function updateOdometerAndTrip(deltaKm) {
-        odoDistance += deltaKm;
-        localStorage.setItem('ebike_odo', odoDistance);
-        document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-
-        if (isTripRunning) {
-            currentTripDistance += deltaKm;
+            document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('inputOdoVal').value = odoDistance.toFixed(2);
             document.getElementById('centerTripVal').innerText = currentTripDistance.toFixed(2);
+            document.getElementById('tripTimerBadge').innerText = formatTripTimer(tripSeconds);
+
+            buildSegmentedArc();
+            recalculateBattery(false);
+            renderHistory();
+
+            requestAnimationFrame(speedAnimationLoop);
+
+            // Resume Trip & GPS if it was active before refresh
+            if (localStorage.getItem('ebike_is_trip_running') === 'true') {
+                startGpsTrip(true);
+            }
+        });
+
+        function formatTripTimer(seconds) {
+            const mm = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const ss = String(seconds % 60).padStart(2, '0');
+            return `${mm}:${ss}`;
         }
-    }
 
-    function speedAnimationLoop() {
-        if (Math.abs(targetSpeed - currentSpeed) > 0.2) {
-            currentSpeed += (targetSpeed - currentSpeed) * 0.16;
-        } else {
-            currentSpeed = targetSpeed;
+        function applyTheme(themeName) {
+            if (themeName === 'default') {
+                document.documentElement.removeAttribute('data-theme');
+            } else {
+                document.documentElement.setAttribute('data-theme', themeName);
+            }
+            localStorage.setItem('ebike_theme', themeName);
+            document.getElementById('themeSelector').value = themeName;
+            buildSegmentedArc();
         }
 
-        const displaySpeed = Math.round(currentSpeed);
-        const speedEl = document.getElementById('speedVal');
-        const unitEl = document.getElementById('speedUnitText');
-        speedEl.innerText = displaySpeed;
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
 
-        const ratio = Math.min(1, Math.max(0, currentSpeed / maxSpeedLimit));
-        
-        const computedStyle = getComputedStyle(document.documentElement);
-        const currentTheme = localStorage.getItem('ebike_theme') || 'default';
-        const inactiveColor = computedStyle.getPropertyValue('--tacho-inactive').trim() || '#162232';
+            hours = hours % 12;
+            hours = hours ? hours : 12;
+            const strHours = String(hours).padStart(2, '0');
 
-        // Warna teks angka kecepatan berdasarkan zona rasio kecepatan
-        let textSpeedColor = computedStyle.getPropertyValue('--green-neon').trim() || '#00ff88';
-        let textSpeedGlow = computedStyle.getPropertyValue('--green-glow').trim() || 'rgba(0, 255, 136, 0.6)';
+            document.getElementById('liveClockTime').innerText = `${strHours}:${minutes}:${seconds}`;
+            document.getElementById('liveClockAmPm').innerText = ampm;
+        }
 
-        if (currentTheme === 'calculator' || currentTheme === 'monochrome') {
-            textSpeedColor = computedStyle.getPropertyValue('--cyan-neon').trim();
-            textSpeedGlow = computedStyle.getPropertyValue('--cyan-glow').trim();
-        } else {
-            if (ratio > 0.8) {
-                textSpeedColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
-                textSpeedGlow = computedStyle.getPropertyValue('--red-glow').trim() || 'rgba(255, 0, 85, 0.7)';
-            } else if (ratio > 0.5) {
-                textSpeedColor = computedStyle.getPropertyValue('--amber-neon').trim() || '#ffaa00';
-                textSpeedGlow = 'rgba(255, 170, 0, 0.6)';
+        function buildSegmentedArc() {
+            const segGroup = document.getElementById('segmentedArcGroup');
+            const scaleGroup = document.getElementById('scaleLabelsGroup');
+            segGroup.innerHTML = '';
+            scaleGroup.innerHTML = '';
+
+            const cx = 180;
+            const cy = 132;
+            const rInner = 125;
+            const rOuter = 142;
+
+            const startAngle = 195;
+            const totalSpan = 210;
+            const segStep = totalSpan / TOTAL_SEGMENTS;
+            const segWidthDeg = segStep * 0.72;
+
+            const computedStyle = getComputedStyle(document.documentElement);
+            const inactiveColor = computedStyle.getPropertyValue('--tacho-inactive').trim() || '#162232';
+            const textColor = computedStyle.getPropertyValue('--text-muted').trim() || '#475569';
+            const maxTextColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
+
+            for (let i = 0; i < TOTAL_SEGMENTS; i++) {
+                const a1 = startAngle - (i * segStep);
+                const a2 = a1 - segWidthDeg;
+
+                const pathD = describeArcBlock(cx, cy, rInner, rOuter, a1, a2);
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                path.setAttribute('d', pathD);
+                path.setAttribute('class', 'speed-block');
+                path.setAttribute('id', `spd-seg-${i}`);
+                path.setAttribute('fill', inactiveColor);
+                path.setAttribute('opacity', '0.4');
+                segGroup.appendChild(path);
+            }
+
+            const ticksCount = 5;
+            for (let t = 0; t <= ticksCount; t++) {
+                const fraction = t / ticksCount;
+                const val = Math.round(fraction * maxSpeedLimit);
+                const angleDeg = startAngle - (fraction * totalSpan);
+                const rad = angleDeg * (Math.PI / 180);
+                const rText = 108;
+                const tx = cx + rText * Math.cos(rad);
+                const ty = cy - rText * Math.sin(rad) + 4;
+
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', tx);
+                text.setAttribute('y', ty);
+                text.setAttribute('text-anchor', 'middle');
+                text.setAttribute('fill', t === ticksCount ? maxTextColor : textColor);
+                text.setAttribute('font-size', '9');
+                text.setAttribute('font-weight', '700');
+                text.setAttribute('font-family', "'Chakra Petch', sans-serif");
+                text.textContent = val;
+                scaleGroup.appendChild(text);
             }
         }
 
-        speedEl.style.color = textSpeedColor;
-        speedEl.style.textShadow = currentTheme === 'calculator' ? 'none' : `0 0 20px ${textSpeedGlow}`;
-        unitEl.style.color = textSpeedColor;
+        function describeArcBlock(cx, cy, r1, r2, degStart, degEnd) {
+            const rad1 = degStart * (Math.PI / 180);
+            const rad2 = degEnd * (Math.PI / 180);
 
-        const activeBlocksCount = ratio * TOTAL_SEGMENTS;
-        for (let i = 0; i < TOTAL_SEGMENTS; i++) {
-            const seg = document.getElementById(`spd-seg-${i}`);
-            if (!seg) continue;
+            const x1 = cx + r1 * Math.cos(rad1);
+            const y1 = cy - r1 * Math.sin(rad1);
+            const x2 = cx + r2 * Math.cos(rad1);
+            const y2 = cy - r2 * Math.sin(rad1);
+            const x3 = cx + r2 * Math.cos(rad2);
+            const y3 = cy - r2 * Math.sin(rad2);
+            const x4 = cx + r1 * Math.cos(rad2);
+            const y4 = cy - r1 * Math.sin(rad2);
 
-            const blockRatio = i / (TOTAL_SEGMENTS - 1);
-            let blockColor;
+            return `M ${x1} ${y1} L ${x2} ${y2} A ${r2} ${r2} 0 0 1 ${x3} ${y3} L ${x4} ${y4} A ${r1} ${r1} 0 0 0 ${x1} ${y1} Z`;
+        }
 
-            // Gradasi warna segmen spesifik sesuai rentang Kecepatan Rendah -> Tinggi
-            if (currentTheme === 'calculator' || currentTheme === 'monochrome') {
-                blockColor = computedStyle.getPropertyValue('--cyan-neon').trim();
-            } else if (currentTheme === 'amber') {
-                blockColor = computedStyle.getPropertyValue('--amber-neon').trim();
-            } else if (currentTheme === 'racing-red') {
-                blockColor = computedStyle.getPropertyValue('--red-neon').trim();
+        function updateMaxSpeedLimit(limit) {
+            limit = Math.max(20, Math.min(150, parseFloat(limit) || 50));
+            maxSpeedLimit = limit;
+            localStorage.setItem('ebike_max_speed', limit);
+
+            document.getElementById('inputMaxSpeed').value = limit;
+            buildSegmentedArc();
+        }
+
+        function manualSetOdo(val) {
+            val = parseFloat(val) || 0;
+            odoDistance = val;
+            localStorage.setItem('ebike_odo', odoDistance);
+            document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+            document.getElementById('inputOdoVal').value = odoDistance.toFixed(2);
+        }
+
+        function resetAllData() {
+            if (confirm("Reset ODO, Trip Distance, dan Menit Timer ke 0?")) {
+                odoDistance = 0;
+                currentTripDistance = 0;
+                tripSeconds = 0;
+
+                localStorage.setItem('ebike_odo', 0);
+                localStorage.setItem('ebike_trip_dist', 0);
+                localStorage.setItem('ebike_trip_seconds', 0);
+
+                document.getElementById('odoVal').innerText = "0.00";
+                document.getElementById('inputOdoVal').value = "0.00";
+                document.getElementById('centerTripVal').innerText = "0.00";
+                document.getElementById('tripTimerBadge').innerText = "00:00";
+            }
+        }
+
+        function updateOdometerAndTrip(deltaKm) {
+            odoDistance += deltaKm;
+            localStorage.setItem('ebike_odo', odoDistance);
+            document.getElementById('odoVal').innerText = odoDistance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            if (isTripRunning) {
+                currentTripDistance += deltaKm;
+                localStorage.setItem('ebike_trip_dist', currentTripDistance);
+                document.getElementById('centerTripVal').innerText = currentTripDistance.toFixed(2);
+            }
+        }
+
+        function speedAnimationLoop() {
+            if (Math.abs(targetSpeed - currentSpeed) > 0.2) {
+                currentSpeed += (targetSpeed - currentSpeed) * 0.16;
             } else {
-                // Default Tema: Hijau (Rendah) -> Amber/Kuning (Sedang) -> Merah (Tinggi)
-                if (blockRatio > 0.8) {
-                    blockColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
-                } else if (blockRatio > 0.5) {
-                    blockColor = computedStyle.getPropertyValue('--amber-neon').trim() || '#ffaa00';
-                } else {
-                    blockColor = computedStyle.getPropertyValue('--green-neon').trim() || '#00ff88';
+                currentSpeed = targetSpeed;
+            }
+
+            const displaySpeed = Math.round(currentSpeed);
+            const speedEl = document.getElementById('speedVal');
+            const unitEl = document.getElementById('speedUnitText');
+            speedEl.innerText = displaySpeed;
+
+            const ratio = Math.min(1, Math.max(0, currentSpeed / maxSpeedLimit));
+
+            const computedStyle = getComputedStyle(document.documentElement);
+            const currentTheme = localStorage.getItem('ebike_theme') || 'default';
+            const inactiveColor = computedStyle.getPropertyValue('--tacho-inactive').trim() || '#162232';
+
+            let textSpeedColor = computedStyle.getPropertyValue('--green-neon').trim() || '#00ff88';
+            let textSpeedGlow = computedStyle.getPropertyValue('--green-glow').trim() || 'rgba(0, 255, 136, 0.6)';
+
+            if (currentTheme === 'calculator' || currentTheme === 'monochrome') {
+                textSpeedColor = computedStyle.getPropertyValue('--cyan-neon').trim();
+                textSpeedGlow = computedStyle.getPropertyValue('--cyan-glow').trim();
+            } else {
+                if (ratio > 0.8) {
+                    textSpeedColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
+                    textSpeedGlow = computedStyle.getPropertyValue('--red-glow').trim() || 'rgba(255, 0, 85, 0.7)';
+                } else if (ratio > 0.5) {
+                    textSpeedColor = computedStyle.getPropertyValue('--amber-neon').trim() || '#ffaa00';
+                    textSpeedGlow = 'rgba(255, 170, 0, 0.6)';
                 }
             }
 
-            if (i < Math.floor(activeBlocksCount)) {
-                seg.setAttribute('fill', blockColor);
-                seg.setAttribute('opacity', '1');
-                seg.style.filter = currentTheme === 'calculator' ? 'none' : `drop-shadow(0 0 4px ${blockColor})`;
-            } else if (i === Math.floor(activeBlocksCount)) {
-                const partial = activeBlocksCount - Math.floor(activeBlocksCount);
-                if (partial > 0.1) {
+            speedEl.style.color = textSpeedColor;
+            speedEl.style.textShadow = currentTheme === 'calculator' ? 'none' : `0 0 20px ${textSpeedGlow}`;
+            unitEl.style.color = textSpeedColor;
+
+            const activeBlocksCount = ratio * TOTAL_SEGMENTS;
+            for (let i = 0; i < TOTAL_SEGMENTS; i++) {
+                const seg = document.getElementById(`spd-seg-${i}`);
+                if (!seg) continue;
+
+                const blockRatio = i / (TOTAL_SEGMENTS - 1);
+                let blockColor;
+
+                if (currentTheme === 'calculator' || currentTheme === 'monochrome') {
+                    blockColor = computedStyle.getPropertyValue('--cyan-neon').trim();
+                } else if (currentTheme === 'amber') {
+                    blockColor = computedStyle.getPropertyValue('--amber-neon').trim();
+                } else if (currentTheme === 'racing-red') {
+                    blockColor = computedStyle.getPropertyValue('--red-neon').trim();
+                } else {
+                    if (blockRatio > 0.8) {
+                        blockColor = computedStyle.getPropertyValue('--red-neon').trim() || '#ff0055';
+                    } else if (blockRatio > 0.5) {
+                        blockColor = computedStyle.getPropertyValue('--amber-neon').trim() || '#ffaa00';
+                    } else {
+                        blockColor = computedStyle.getPropertyValue('--green-neon').trim() || '#00ff88';
+                    }
+                }
+
+                if (i < Math.floor(activeBlocksCount)) {
                     seg.setAttribute('fill', blockColor);
-                    seg.setAttribute('opacity', (0.3 + partial * 0.7).toFixed(2));
-                    seg.style.filter = currentTheme === 'calculator' ? 'none' : `drop-shadow(0 0 2px ${blockColor})`;
+                    seg.setAttribute('opacity', '1');
+                    seg.style.filter = currentTheme === 'calculator' ? 'none' : `drop-shadow(0 0 4px ${blockColor})`;
+                } else if (i === Math.floor(activeBlocksCount)) {
+                    const partial = activeBlocksCount - Math.floor(activeBlocksCount);
+                    if (partial > 0.1) {
+                        seg.setAttribute('fill', blockColor);
+                        seg.setAttribute('opacity', (0.3 + partial * 0.7).toFixed(2));
+                        seg.style.filter = currentTheme === 'calculator' ? 'none' : `drop-shadow(0 0 2px ${blockColor})`;
+                    } else {
+                        seg.setAttribute('fill', inactiveColor);
+                        seg.setAttribute('opacity', '0.35');
+                        seg.style.filter = 'none';
+                    }
                 } else {
                     seg.setAttribute('fill', inactiveColor);
                     seg.setAttribute('opacity', '0.35');
                     seg.style.filter = 'none';
                 }
-            } else {
-                seg.setAttribute('fill', inactiveColor);
-                seg.setAttribute('opacity', '0.35');
-                seg.style.filter = 'none';
             }
+
+            requestAnimationFrame(speedAnimationLoop);
         }
 
-        requestAnimationFrame(speedAnimationLoop);
-    }
+        function toggleTurn(direction) {
+            const elLeft = document.getElementById('leftSignal');
+            const elRight = document.getElementById('rightSignal');
 
-    function toggleTurn(direction) {
-        const elLeft = document.getElementById('leftSignal');
-        const elRight = document.getElementById('rightSignal');
-
-        if (direction === 'left') {
-            if (elLeft.classList.contains('active')) {
-                elLeft.classList.remove('active');
-            } else {
-                elLeft.classList.add('active');
-                elRight.classList.remove('active');
-            }
-        } else {
-            if (elRight.classList.contains('active')) {
-                elRight.classList.remove('active');
-            } else {
-                elRight.classList.add('active');
-                elLeft.classList.remove('active');
-            }
-        }
-    }
-
-    function toggleTestMode() {
-        const pill = document.getElementById('pillTestMode');
-        isTestModeActive = !isTestModeActive;
-
-        if (isTestModeActive) {
-            pill.className = 'icon-pill active-blue';
-            let increase = true;
-            
-            testModeInterval = setInterval(() => {
-                if (increase) {
-                    targetSpeed += Math.floor(Math.random() * 5) + 2;
-                    if (targetSpeed >= maxSpeedLimit) {
-                        targetSpeed = maxSpeedLimit;
-                        increase = false;
-                    }
+            if (direction === 'left') {
+                if (elLeft.classList.contains('active')) {
+                    elLeft.classList.remove('active');
                 } else {
-                    targetSpeed -= Math.floor(Math.random() * 5) + 2;
-                    if (targetSpeed <= 0) {
-                        targetSpeed = 0;
-                        increase = true;
-                    }
+                    elLeft.classList.add('active');
+                    elRight.classList.remove('active');
                 }
+            } else {
+                if (elRight.classList.contains('active')) {
+                    elRight.classList.remove('active');
+                } else {
+                    elRight.classList.add('active');
+                    elLeft.classList.remove('active');
+                }
+            }
+        }
+
+        /* THROTTLE (GAS) HOLD FEATURE FOR TEST MODE */
+        function startGasThrottle(e) {
+            if (e && e.cancelable) e.preventDefault();
+            if (isGasHeld) return;
+            isGasHeld = true;
+
+            const pill = document.getElementById('pillTestMode');
+            pill.className = 'icon-pill active-blue';
+
+            if (gasThrottleInterval) clearInterval(gasThrottleInterval);
+
+            gasThrottleInterval = setInterval(() => {
+                if (!isGasHeld) return;
+
+                targetSpeed = Math.min(maxSpeedLimit, targetSpeed + 1.8);
 
                 if (targetSpeed > 0) {
-                    const deltaDist = (targetSpeed / 3600) * 0.3;
+                    const deltaDist = (targetSpeed / 3600) * 0.05;
                     updateOdometerAndTrip(deltaDist);
-
-                    if (isTripRunning) {
-                        consumeBattery(0.003);
-                    }
+                    consumeBattery(deltaDist * 0.35);
                 }
-            }, 300);
-        } else {
+            }, 50);
+        }
+
+        function stopGasThrottle(e) {
+            if (e && e.cancelable) e.preventDefault();
+            if (!isGasHeld) return;
+            isGasHeld = false;
+
+            const pill = document.getElementById('pillTestMode');
             pill.className = 'icon-pill';
-            clearInterval(testModeInterval);
+
+            if (gasThrottleInterval) {
+                clearInterval(gasThrottleInterval);
+                gasThrottleInterval = null;
+            }
+
             targetSpeed = 0;
         }
-    }
 
-    function calculateSoC(voltage, chem, seriesStr) {
-        const series = parseInt(seriesStr) || 16;
-        const cellV = voltage / series;
+        function calculateSoC(voltage, chem, seriesStr) {
+            const series = parseInt(seriesStr) || 16;
+            const cellV = voltage / series;
 
-        let table = [];
+            let table = [];
 
-        if (chem === 'LiFePO4') {
-            table = [
-                { v: 3.45, pct: 100 },
-                { v: 3.35, pct: 95 },
-                { v: 3.32, pct: 85 },
-                { v: 3.29, pct: 70 },
-                { v: 3.26, pct: 50 },
-                { v: 3.22, pct: 30 },
-                { v: 3.18, pct: 20 },
-                { v: 3.05, pct: 10 },
-                { v: 2.80, pct: 0 }
-            ];
-        } else if (chem === 'SLA') {
-            const blockCount = series / 4;
-            const blockV = voltage / Math.max(1, blockCount);
-            table = [
-                { v: 12.85, pct: 100 },
-                { v: 12.60, pct: 85 },
-                { v: 12.40, pct: 70 },
-                { v: 12.20, pct: 50 },
-                { v: 12.00, pct: 30 },
-                { v: 11.80, pct: 15 },
-                { v: 10.50, pct: 0 }
-            ];
-            if (blockV >= table[0].v) return 100;
-            if (blockV <= table[table.length - 1].v) return 0;
+            if (chem === 'LiFePO4') {
+                table = [
+                    { v: 3.45, pct: 100 },
+                    { v: 3.35, pct: 95 },
+                    { v: 3.32, pct: 85 },
+                    { v: 3.29, pct: 70 },
+                    { v: 3.26, pct: 50 },
+                    { v: 3.22, pct: 30 },
+                    { v: 3.18, pct: 20 },
+                    { v: 3.05, pct: 10 },
+                    { v: 2.80, pct: 0 }
+                ];
+            } else if (chem === 'SLA') {
+                const blockCount = series / 4;
+                const blockV = voltage / Math.max(1, blockCount);
+                table = [
+                    { v: 12.85, pct: 100 },
+                    { v: 12.60, pct: 85 },
+                    { v: 12.40, pct: 70 },
+                    { v: 12.20, pct: 50 },
+                    { v: 12.00, pct: 30 },
+                    { v: 11.80, pct: 15 },
+                    { v: 10.50, pct: 0 }
+                ];
+                if (blockV >= table[0].v) return 100;
+                if (blockV <= table[table.length - 1].v) return 0;
+                for (let i = 0; i < table.length - 1; i++) {
+                    if (blockV <= table[i].v && blockV >= table[i + 1].v) {
+                        const ratio = (blockV - table[i + 1].v) / (table[i].v - table[i + 1].v);
+                        return Math.round(table[i + 1].pct + ratio * (table[i].pct - table[i + 1].pct));
+                    }
+                }
+                return 50;
+            } else {
+                table = [
+                    { v: 4.20, pct: 100 },
+                    { v: 4.05, pct: 90 },
+                    { v: 3.90, pct: 75 },
+                    { v: 3.75, pct: 55 },
+                    { v: 3.60, pct: 35 },
+                    { v: 3.45, pct: 15 },
+                    { v: 3.00, pct: 0 }
+                ];
+            }
+
+            if (cellV >= table[0].v) return 100;
+            if (cellV <= table[table.length - 1].v) return 0;
+
             for (let i = 0; i < table.length - 1; i++) {
-                if (blockV <= table[i].v && blockV >= table[i+1].v) {
-                    const ratio = (blockV - table[i+1].v) / (table[i].v - table[i+1].v);
-                    return Math.round(table[i+1].pct + ratio * (table[i].pct - table[i+1].pct));
+                if (cellV <= table[i].v && cellV >= table[i + 1].v) {
+                    const ratio = (cellV - table[i + 1].v) / (table[i].v - table[i + 1].v);
+                    return Math.round(table[i + 1].pct + ratio * (table[i].pct - table[i + 1].pct));
                 }
             }
             return 50;
-        } else {
-            table = [
-                { v: 4.20, pct: 100 },
-                { v: 4.05, pct: 90 },
-                { v: 3.90, pct: 75 },
-                { v: 3.75, pct: 55 },
-                { v: 3.60, pct: 35 },
-                { v: 3.45, pct: 15 },
-                { v: 3.00, pct: 0 }
-            ];
         }
 
-        if (cellV >= table[0].v) return 100;
-        if (cellV <= table[table.length - 1].v) return 0;
+        function recalculateBattery(resetCapacity = true) {
+            const chem = document.getElementById('configChemistry').value;
+            const config = document.getElementById('configSys').value;
+            const totalCap = parseFloat(document.getElementById('inputCapacity').value) || 20;
+            const volts = parseFloat(document.getElementById('inputVolts').value) || 53.1;
+            const range = parseFloat(document.getElementById('inputMaxRange').value) || 50;
 
-        for (let i = 0; i < table.length - 1; i++) {
-            if (cellV <= table[i].v && cellV >= table[i+1].v) {
-                const ratio = (cellV - table[i+1].v) / (table[i].v - table[i+1].v);
-                return Math.round(table[i+1].pct + ratio * (table[i].pct - table[i+1].pct));
+            currentVoltage = volts;
+            maxRangeKm = range;
+            totalCapacityAh = totalCap;
+
+            localStorage.setItem('ebike_user_volts', volts);
+            localStorage.setItem('ebike_user_ah', totalCap);
+            localStorage.setItem('ebike_sys_config', config);
+            localStorage.setItem('ebike_sys_chem', chem);
+            localStorage.setItem('ebike_max_range', range);
+
+            batteryPercent = calculateSoC(volts, chem, config);
+            if (resetCapacity) {
+                currentRemainingAh = totalCap * (batteryPercent / 100);
             }
-        }
-        return 50;
-    }
+            localStorage.setItem('ebike_current_ah', currentRemainingAh);
 
-    function recalculateBattery() {
-        const chem = document.getElementById('configChemistry').value;
-        const config = document.getElementById('configSys').value;
-        const totalCap = parseFloat(document.getElementById('inputCapacity').value) || 20;
-        const volts = parseFloat(document.getElementById('inputVolts').value) || 53.1;
-        const range = parseFloat(document.getElementById('inputMaxRange').value) || 50;
-        
-        currentVoltage = volts;
-        maxRangeKm = range;
-
-        localStorage.setItem('ebike_user_volts', volts);
-        localStorage.setItem('ebike_user_ah', totalCap);
-        localStorage.setItem('ebike_sys_config', config);
-        localStorage.setItem('ebike_sys_chem', chem);
-        localStorage.setItem('ebike_max_range', range);
-
-        batteryPercent = calculateSoC(volts, chem, config);
-        currentRemainingAh = totalCap * (batteryPercent / 100);
-
-        updateDisplays(totalCap, config, chem);
-    }
-
-    function consumeBattery(deltaAh) {
-    const totalCap = parseFloat(document.getElementById('inputCapacity').value) || 20;
-    const chem = document.getElementById('configChemistry').value;
-    const config = document.getElementById('configSys').value;
-
-    // 1. Kurangi sisa kapasitas Ah
-    currentRemainingAh = Math.max(0, currentRemainingAh - deltaAh);
-    batteryPercent = Math.max(0, Math.min(100, Math.round((currentRemainingAh / totalCap) * 100)));
-
-    // 2. Turunkan voltase secara realistis berdasarkan Ah yang terpakai
-    // Asumsi: Baterai habis total saat voltase turun ~12V - 15V dari posisi penuh
-    const voltDropPerAh = 0.15; // Penurunan voltase per Ah terpakai
-    currentVoltage = Math.max(0, currentVoltage - (deltaAh * voltDropPerAh));
-
-    // 3. Update input voltase di menu pengaturan agar sinkron
-    document.getElementById('inputVolts').value = currentVoltage.toFixed(2);
-
-    // 4. Perbarui tampilan UI
-    updateDisplays(totalCap, config, chem);
-    }
-
-    function updateDisplays(totalCap, config, chem) {
-        document.getElementById('voltMainVal').innerHTML = currentVoltage.toFixed(2) + "<span>V</span>";
-        
-        const estimatedRange = (batteryPercent / 100) * maxRangeKm;
-        document.getElementById('centerRangeVal').innerText = estimatedRange.toFixed(1);
-
-        const series = parseInt(config) || 16;
-        let minV = series * 2.8;
-        let maxV = series * 3.65;
-
-        if (chem === 'SLA') {
-            minV = (series / 4) * 10.5;
-            maxV = (series / 4) * 13.8;
-        } else if (chem === 'Li-Ion') {
-            minV = series * 3.0;
-            maxV = series * 4.2;
+            updateDisplays(totalCap, config, chem);
         }
 
-        const vPct = Math.max(5, Math.min(100, Math.round(((currentVoltage - minV) / (maxV - minV)) * 100)));
-        document.getElementById('voltFillBar').style.width = vPct + "%";
-        
-        const voltBadge = document.getElementById('voltStatusBadge');
-        if (batteryPercent > 70) {
-            voltBadge.innerText = 'OPTIMAL';
-            voltBadge.style.color = 'var(--green-neon)';
-        } else if (batteryPercent > 25) {
-            voltBadge.innerText = 'NORMAL';
-            voltBadge.style.color = 'var(--cyan-neon)';
-        } else {
-            voltBadge.innerText = 'LOW VOLT';
-            voltBadge.style.color = 'var(--red-neon)';
+        function consumeBattery(deltaAh) {
+            const totalCap = parseFloat(document.getElementById('inputCapacity').value) || 20;
+            const chem = document.getElementById('configChemistry').value;
+            const config = document.getElementById('configSys').value;
+
+            currentRemainingAh = Math.max(0, currentRemainingAh - deltaAh);
+            batteryPercent = Math.max(0, Math.min(100, Math.round((currentRemainingAh / totalCap) * 100)));
+
+            const voltDropPerAh = 0.15;
+            currentVoltage = Math.max(0, currentVoltage - (deltaAh * voltDropPerAh));
+
+            document.getElementById('inputVolts').value = currentVoltage.toFixed(2);
+            localStorage.setItem('ebike_user_volts', currentVoltage);
+            localStorage.setItem('ebike_current_ah', currentRemainingAh);
+
+            updateDisplays(totalCap, config, chem);
         }
 
-        document.getElementById('batPercentBadge').innerText = batteryPercent + "%";
-        document.getElementById('batPercentBadge').style.color = batteryPercent > 40 ? 'var(--green-neon)' : (batteryPercent > 20 ? 'var(--amber-neon)' : 'var(--red-neon)');
-        document.getElementById('batAhVal').innerHTML = currentRemainingAh.toFixed(2) + "<span>Ah</span>";
-        document.getElementById('capTotalLabel').innerText = totalCap.toFixed(2) + " Ah";
-        document.getElementById('sysProfileBadge').innerText = `${chem} ${config}`;
+        function updateDisplays(totalCap, config, chem) {
+            document.getElementById('voltMainVal').innerHTML = currentVoltage.toFixed(2) + "<span>V</span>";
 
-        const segments = document.querySelectorAll('#batteryBar .seg');
-        const activeCount = Math.round((batteryPercent / 100) * segments.length);
+            const remRatio = Math.max(0, Math.min(1, currentRemainingAh / Math.max(1, totalCap)));
+            const estimatedRange = remRatio * maxRangeKm;
+            document.getElementById('centerRangeVal').innerText = estimatedRange.toFixed(1);
 
-        segments.forEach((seg, idx) => {
-            seg.className = 'seg';
-            if (idx < activeCount) {
-                if (batteryPercent > 40) {
-                    seg.classList.add('filled-green');
-                } else if (batteryPercent > 30) {
-                    seg.classList.add('filled-amber');
-                } else {
-                    seg.classList.add('filled-red');
+            const series = parseInt(config) || 16;
+            let minV = series * 2.8;
+            let maxV = series * 3.65;
+
+            if (chem === 'SLA') {
+                minV = (series / 4) * 10.5;
+                maxV = (series / 4) * 13.8;
+            } else if (chem === 'Li-Ion') {
+                minV = series * 3.0;
+                maxV = series * 4.2;
+            }
+
+            const vPct = Math.max(5, Math.min(100, Math.round(((currentVoltage - minV) / (maxV - minV)) * 100)));
+            document.getElementById('voltFillBar').style.width = vPct + "%";
+
+            const voltBadge = document.getElementById('voltStatusBadge');
+            if (batteryPercent > 70) {
+                voltBadge.innerText = 'OPTIMAL';
+                voltBadge.style.color = 'var(--green-neon)';
+            } else if (batteryPercent > 25) {
+                voltBadge.innerText = 'NORMAL';
+                voltBadge.style.color = 'var(--cyan-neon)';
+            } else {
+                voltBadge.innerText = 'LOW VOLT';
+                voltBadge.style.color = 'var(--red-neon)';
+            }
+
+            document.getElementById('batPercentBadge').innerText = batteryPercent + "%";
+            document.getElementById('batPercentBadge').style.color = batteryPercent > 40 ? 'var(--green-neon)' : (batteryPercent > 20 ? 'var(--amber-neon)' : 'var(--red-neon)');
+            document.getElementById('batAhVal').innerHTML = currentRemainingAh.toFixed(2) + "<span>Ah</span>";
+            document.getElementById('capTotalLabel').innerText = totalCap.toFixed(2) + " Ah";
+            document.getElementById('sysProfileBadge').innerText = `${chem} ${config}`;
+
+            const segments = document.querySelectorAll('#batteryBar .seg');
+            const activeCount = Math.round((batteryPercent / 100) * segments.length);
+
+            segments.forEach((seg, idx) => {
+                seg.className = 'seg';
+                if (idx < activeCount) {
+                    if (batteryPercent > 40) {
+                        seg.classList.add('filled-green');
+                    } else if (batteryPercent > 30) {
+                        seg.classList.add('filled-amber');
+                    } else {
+                        seg.classList.add('filled-red');
+                    }
                 }
+            });
+
+            const pillWarn = document.getElementById('pillWarn');
+            if (batteryPercent < 30) {
+                pillWarn.className = 'icon-pill active-red';
+            } else {
+                pillWarn.className = 'icon-pill';
             }
-        });
-
-        const pillWarn = document.getElementById('pillWarn');
-        if (batteryPercent < 30) {
-            pillWarn.className = 'icon-pill active-red';
-        } else {
-            pillWarn.className = 'icon-pill';
         }
-    }
 
-    async function toggleGPS() {
-        const btn = document.getElementById('btnGPS');
-        const txt = document.getElementById('txtGPS');
+        /* COMBINED GPS & TRIP BUTTON FUNCTIONALITY */
+        async function toggleGpsTrip() {
+            if (!isGpsTripActive) {
+                await startGpsTrip(false);
+            } else {
+                stopGpsTrip();
+            }
+        }
 
-        if (!isGPSActive) {
+        async function startGpsTrip(isResume = false) {
+            isGpsTripActive = true;
+            isTripRunning = true;
+            isGPSActive = true;
+            localStorage.setItem('ebike_is_trip_running', 'true');
+
+            const btn = document.getElementById('btnGpsTrip');
+            const txt = document.getElementById('txtGpsTrip');
+            const icon = document.getElementById('iconGpsTrip');
+
+            btn.classList.add('active');
+            txt.innerText = "Berhenti";
+            icon.innerText = "🛑";
+
             if ("geolocation" in navigator) {
                 gpsWatchId = navigator.geolocation.watchPosition(
                     gpsSuccess,
                     gpsError,
                     { enableHighAccuracy: true, timeout: 8000, maximumAge: 1000 }
                 );
-                isGPSActive = true;
-                btn.classList.add('active');
-                txt.innerText = "Matikan GPS";
-                
-                try {
-                    if ('wakeLock' in navigator) {
-                        wakeLock = await navigator.wakeLock.request('screen');
-                    }
-                } catch(e) {}
-            } else {
-                alert("GPS tidak tersedia pada browser ini.");
             }
-        } else {
-            navigator.geolocation.clearWatch(gpsWatchId);
-            isGPSActive = false;
-            btn.classList.remove('active');
-            txt.innerText = "Aktifkan GPS";
-            if (wakeLock) wakeLock.release();
-        }
-    }
 
-    function gpsSuccess(pos) {
-        if (isTestModeActive) return;
+            await requestWakeLock();
 
-        const speedKmh = pos.coords.speed ? (pos.coords.speed * 3.6) : 0;
-        targetSpeed = Math.min(maxSpeedLimit, Math.max(0, speedKmh));
-
-        const lat = pos.coords.latitude;
-        const lon = pos.coords.longitude;
-
-        if (lastPosition) {
-            const distKm = getCoordsDistance(lastPosition.lat, lastPosition.lon, lat, lon);
-            if (distKm > 0.003) {
-                updateOdometerAndTrip(distKm);
-
-                if (isTripRunning) {
-                    consumeBattery(distKm * 0.35);
-                }
-            }
-        }
-        lastPosition = { lat, lon };
-    }
-
-    function gpsError(err) {
-        console.warn("GPS Tracking info: ", err.message);
-    }
-
-    function getCoordsDistance(lat1, lon1, lat2, lon2) {
-        const R = 6371;
-        const dLat = (lat2 - lat1) * Math.PI / 180;
-        const dLon = (lon2 - lon1) * Math.PI / 180;
-        const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                  Math.sin(dLon/2) * Math.sin(dLon/2);
-        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    }
-
-    function toggleTrip() {
-        const btn = document.getElementById('btnTrip');
-        const txt = document.getElementById('txtTrip');
-
-        if (!isTripRunning) {
-            isTripRunning = true;
-            currentTripDistance = 0;
-            tripStartTime = new Date();
-            btn.classList.add('recording');
-            txt.innerText = "Selesai Trip";
-
-            document.getElementById('centerTripVal').innerText = "0.00";
-            document.getElementById('tripTimerBadge').innerText = "00:00";
-
-            tripIntervalTimer = setInterval(() => {
-                const elapsedSec = Math.floor((new Date() - tripStartTime) / 1000);
-                const mm = String(Math.floor(elapsedSec / 60)).padStart(2, '0');
-                const ss = String(elapsedSec % 60).padStart(2, '0');
-                document.getElementById('tripTimerBadge').innerText = `${mm}:${ss}`;
+            if (tripTimerInterval) clearInterval(tripTimerInterval);
+            tripTimerInterval = setInterval(() => {
+                tripSeconds++;
+                localStorage.setItem('ebike_trip_seconds', tripSeconds);
+                document.getElementById('tripTimerBadge').innerText = formatTripTimer(tripSeconds);
             }, 1000);
+        }
 
-        } else {
+        function stopGpsTrip() {
+            isGpsTripActive = false;
             isTripRunning = false;
-            clearInterval(tripIntervalTimer);
-            btn.classList.remove('recording');
-            txt.innerText = "Mulai Trip";
+            isGPSActive = false;
+            localStorage.setItem('ebike_is_trip_running', 'false');
 
-            const elapsedMin = Math.max(1, Math.round((new Date() - tripStartTime) / 60000));
+            if (gpsWatchId !== null) {
+                navigator.geolocation.clearWatch(gpsWatchId);
+                gpsWatchId = null;
+            }
+
+            releaseWakeLock();
+
+            if (tripTimerInterval) {
+                clearInterval(tripTimerInterval);
+                tripTimerInterval = null;
+            }
+
+            const btn = document.getElementById('btnGpsTrip');
+            const txt = document.getElementById('txtGpsTrip');
+            const icon = document.getElementById('iconGpsTrip');
+
+            btn.classList.remove('active');
+            txt.innerText = "Mulai";
+            icon.innerText = "📡";
+
+            const elapsedMin = Math.max(1, Math.round(tripSeconds / 60));
             const usedAh = (currentTripDistance * 0.35).toFixed(2);
 
             if (currentTripDistance > 0.01) {
                 const rec = {
                     id: Date.now(),
-                    date: tripStartTime.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
+                    date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }),
                     dist: currentTripDistance.toFixed(2),
                     duration: elapsedMin,
                     ah: usedAh
@@ -1530,28 +1563,85 @@
                 localStorage.setItem('ebike_trip_records', JSON.stringify(historyRecords));
                 renderHistory();
             }
-
-            document.getElementById('tripTimerBadge').innerText = "00:00";
         }
-    }
 
-    function renderHistory() {
-        const list = document.getElementById('historyItemsContainer');
-        list.innerHTML = "";
+        /* WAKELOCK FUNCTIONALITY */
+        async function requestWakeLock() {
+            try {
+                if ('wakeLock' in navigator) {
+                    wakeLock = await navigator.wakeLock.request('screen');
+                }
+            } catch (err) {
+                console.warn("Wake Lock Error:", err);
+            }
+        }
 
-        let sumDist = 0;
-        let sumAh = 0;
+        function releaseWakeLock() {
+            if (wakeLock !== null) {
+                wakeLock.release().catch(e => console.warn(e));
+                wakeLock = null;
+            }
+        }
 
-        if (historyRecords.length === 0) {
-            list.innerHTML = `<div style="text-align:center; color:var(--text-muted); font-size:0.75rem; padding:12px;">Belum ada sesi trip tersimpan.</div>`;
-        } else {
-            historyRecords.forEach(item => {
-                sumDist += parseFloat(item.dist);
-                sumAh += parseFloat(item.ah);
+        document.addEventListener('visibilitychange', async () => {
+            if (wakeLock !== null && document.visibilityState === 'visible' && isTripRunning) {
+                await requestWakeLock();
+            }
+        });
 
-                const div = document.createElement('div');
-                div.className = 'history-card';
-                div.innerHTML = `
+        function gpsSuccess(pos) {
+            if (isGasHeld) return;
+
+            const speedKmh = pos.coords.speed ? (pos.coords.speed * 3.6) : 0;
+            targetSpeed = Math.min(maxSpeedLimit, Math.max(0, speedKmh));
+
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+
+            if (lastPosition) {
+                const distKm = getCoordsDistance(lastPosition.lat, lastPosition.lon, lat, lon);
+                if (distKm > 0.003) {
+                    updateOdometerAndTrip(distKm);
+
+                    if (isTripRunning) {
+                        consumeBattery(distKm * 0.35);
+                    }
+                }
+            }
+            lastPosition = { lat, lon };
+        }
+
+        function gpsError(err) {
+            console.warn("GPS Tracking info: ", err.message);
+        }
+
+        function getCoordsDistance(lat1, lon1, lat2, lon2) {
+            const R = 6371;
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        }
+
+        function renderHistory() {
+            const list = document.getElementById('historyItemsContainer');
+            list.innerHTML = "";
+
+            let sumDist = 0;
+            let sumAh = 0;
+
+            if (historyRecords.length === 0) {
+                list.innerHTML = `<div style="text-align:center; color:var(--text-muted); font-size:0.75rem; padding:12px;">Belum ada sesi trip tersimpan.</div>`;
+            } else {
+                historyRecords.forEach(item => {
+                    sumDist += parseFloat(item.dist);
+                    sumAh += parseFloat(item.ah);
+
+                    const div = document.createElement('div');
+                    div.className = 'history-card';
+                    div.innerHTML = `
                     <div>
                         <span style="font-weight:700; color:var(--text-bright);">${item.dist} km</span> 
                         <span style="color:var(--text-muted); font-size:0.7rem;">(${item.duration}m)</span>
@@ -1559,39 +1649,40 @@
                     </div>
                     <button class="hist-del-btn" onclick="deleteHistory(${item.id})">✖</button>
                 `;
-                list.appendChild(div);
-            });
+                    list.appendChild(div);
+                });
+            }
+
+            document.getElementById('histTotalKm').innerText = sumDist.toFixed(2) + " km";
+            document.getElementById('histTotalAh').innerText = sumAh.toFixed(2) + " Ah";
         }
 
-        document.getElementById('histTotalKm').innerText = sumDist.toFixed(2) + " km";
-        document.getElementById('histTotalAh').innerText = sumAh.toFixed(2) + " Ah";
-    }
-
-    function deleteHistory(id) {
-        historyRecords = historyRecords.filter(r => r.id !== id);
-        localStorage.setItem('ebike_trip_records', JSON.stringify(historyRecords));
-        renderHistory();
-    }
-
-    function clearAllHistory() {
-        if (confirm("Kosongkan semua riwayat perjalanan?")) {
-            historyRecords = [];
-            localStorage.removeItem('ebike_trip_records');
+        function deleteHistory(id) {
+            historyRecords = historyRecords.filter(r => r.id !== id);
+            localStorage.setItem('ebike_trip_records', JSON.stringify(historyRecords));
             renderHistory();
         }
-    }
 
-    function toggleCollapse(bodyId, arrowId) {
-        const body = document.getElementById(bodyId);
-        const arrow = document.getElementById(arrowId);
-        if (body.classList.contains('hidden')) {
-            body.classList.remove('hidden');
-            arrow.innerText = '▲ Tutup';
-        } else {
-            body.classList.add('hidden');
-            arrow.innerText = '▼ Buka';
+        function clearAllHistory() {
+            if (confirm("Kosongkan semua riwayat perjalanan?")) {
+                historyRecords = [];
+                localStorage.removeItem('ebike_trip_records');
+                renderHistory();
+            }
         }
-    }
-</script>
+
+        function toggleCollapse(bodyId, arrowId) {
+            const bodyEl = document.getElementById(bodyId);
+            const arrowEl = document.getElementById(arrowId);
+            if (bodyEl.classList.contains('hidden')) {
+                bodyEl.classList.remove('hidden');
+                arrowEl.innerText = '▲ Tutup';
+            } else {
+                bodyEl.classList.add('hidden');
+                arrowEl.innerText = '▼ Buka';
+            }
+        }
+    </script>
 </body>
+
 </html>
